@@ -1,0 +1,24 @@
+{
+  "name": "css-import-tests",
+  "version": "0.0.0",
+  "description": "Tests for @import in CSS",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/romainmenke/css-import-tests.git"
+  },
+  "author": "Romain Menke",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/romainmenke/css-import-tests/issues"
+  },
+  "homepage": "https://github.com/romainmenke/css-import-tests#readme",
+  "dependencies": {
+    "puppeteer": "^20.8.2",
+    "postcss": "^8.4.26",
+    "postcss-import": "^15.1.0"
+  }
+}
