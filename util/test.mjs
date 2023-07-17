@@ -15,10 +15,12 @@ function html(bundle = 'native') {
 	<title>Native</title>
 
 	<style>
-		:where(.box) {
-			width: 100px;
-			height: 100px;
-			background-color: red;
+		@layer base {
+			:where(.box) {
+				width: 100px;
+				height: 100px;
+				background-color: red;
+			}
 		}
 	</style>
 
@@ -61,10 +63,12 @@ export async function createTest(browser, port, testPath) {
 
 					case 'postcss-import':
 						await postcss([
-							postcssImportDev ? postcssImportDev({
+							process.env.DEV && postcssImportDev ? postcssImportDev({
 								path: [path.join(...testPath)],
+								skipDuplicates: false,
 							}) : postcssImport({
 								path: [path.join(...testPath)],
+								skipDuplicates: false,
 							}),
 						]).process(await fsp.readFile(path.join(...testPath, 'style.css'), 'utf8'), {
 							from: 'style.css',
