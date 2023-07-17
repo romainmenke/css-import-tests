@@ -2,6 +2,7 @@ import http from 'http';
 import { promises as fsp } from 'fs';
 import postcss from 'postcss';
 import postcssImport from 'postcss-import';
+import postcssImportDev from '../postcss-import/index.js';
 import assert from 'assert';
 import path from 'path';
 
@@ -60,13 +61,14 @@ export async function createTest(browser, port, testPath) {
 
 					case 'postcss-import':
 						await postcss([
-							postcssImport({
+							postcssImportDev ? postcssImportDev({
+								path: [path.join(...testPath)],
+							}) : postcssImport({
 								path: [path.join(...testPath)],
 							}),
 						]).process(await fsp.readFile(path.join(...testPath, 'style.css'), 'utf8'), {
 							from: 'style.css',
 						}).then((result) => {
-							console.log(result.css);
 							res.end(result.css);
 						});
 						return;

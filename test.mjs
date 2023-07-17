@@ -1,6 +1,8 @@
-import puppeteer from "puppeteer";
 import fs from "fs/promises";
-import { createTest } from "./util/test.mjs";
+import puppeteer from "puppeteer";
+import './prepare-postcss-import-dev.mjs';
+
+const { createTest } = await import('./util/test.mjs')
 
 const browser = await puppeteer.launch({
 	headless: 'new',
@@ -12,18 +14,46 @@ const testCases = (await fs.readdir('./tests', { withFileTypes: true })).filter(
 	return dirent.name
 })
 
+const results = [];
+
 for (let i = 0; i < testCases.length; i++) {
 	const testCase = testCases[i];
 	const port = 8080 + i;
 
 	try {
 		await createTest(browser, port, ['tests', testCase])
-		console.log(`OK - ${testCase}`);
+		results.push({
+			label: testCase,
+			success: true,
+		});
 	} catch (e) {
-		console.error(`FAIL - ${testCase}`);
-		console.error(e);
-		process.exit(1);
+		results.push({
+			label: testCase,
+			success: false,
+			error: e,
+		});
 	}
 }
 
+let hasFailures = false
+for (const result of results) {
+	if (result.success === false) {
+		hasFailures = true;
+
+		console.error(`FAIL - ${result.label}`)
+
+		if (process.env.DEBUG) {
+			console.error(result.error);
+		}
+
+		continue;
+	}
+	
+	console.log(`OK - ${result.label}`)
+}
+
 await browser.close()
+
+if (hasFailures) {
+	process.exit(1);
+}
