@@ -1,10 +1,12 @@
+import * as esbuild from 'esbuild'
 import http from 'http';
-import { promises as fsp } from 'fs';
+import path from 'path';
+import fs from 'fs/promises';
 import postcss from 'postcss';
 import postcssImport from 'postcss-import';
 import postcssImportDev from '../postcss-import/index.js';
-import assert from 'assert';
-import path from 'path';
+import { bundle as lightningcss } from 'lightningcss';
+import { promises as fsp } from 'fs';
 
 function html(bundle = 'native') {
 	return `<!DOCTYPE html>
@@ -36,10 +38,10 @@ function html(bundle = 'native') {
 
 export async function createTestSafe(browser, testPath) {
 	try {
-		await createTest(browser, testPath);
+		const result = await createTest(browser, testPath);
 		return {
+			...result,
 			label: testPath.slice(1).join('/'),
-			success: true,
 		}
 	} catch (e) {
 		return {
@@ -68,6 +70,16 @@ export async function createTest(browser, testPath) {
 				res.writeHead(200);
 				res.end(html('postcss-import'));
 				return;
+			case '/lightningcss.html':
+				res.setHeader('Content-type', 'text/html');
+				res.writeHead(200);
+				res.end(html('lightningcss'));
+				return;
+			case '/esbuild.html':
+				res.setHeader('Content-type', 'text/html');
+				res.writeHead(200);
+				res.end(html('esbuild'));
+				return;
 			case '/style.css':
 				res.setHeader('Content-type', 'text/css');
 				res.writeHead(200);
@@ -90,7 +102,38 @@ export async function createTest(browser, testPath) {
 							from: 'style.css',
 						}).then((result) => {
 							res.end(result.css);
+						}).catch((e) => {
+							res.end('');
 						});
+						return;
+					case 'lightningcss':
+						try {
+							let { code } = lightningcss({
+								filename: path.join(...testPath, 'style.css'),
+								minify: false
+							});
+
+							res.end(code);
+						} catch (e) {
+							res.end('');
+						}
+
+						return;
+					case 'esbuild':
+						try {
+							await esbuild.build({
+								entryPoints: [path.join(...testPath, 'style.css')],
+								outfile: path.join(...testPath, 'esbuild.css'),
+								bundle: true,
+							})
+
+							res.end(await fsp.readFile(path.join(...testPath, 'esbuild.css'), 'utf8'));
+							await fs.rm(path.join(...testPath, 'esbuild.css'));
+						} catch (e) {
+							res.end('');
+						}
+						
+
 						return;
 				}
 
@@ -120,25 +163,67 @@ export async function createTest(browser, testPath) {
 	});
 
 	let results = {
-		native: null,
-		postcssImport: null,
+		success: false,
+		bundlers: []
 	}
 
 	{
 		await page.goto(`http://localhost:8080/native.html`);
-		results.native = await page.evaluate(async () => {
+		const result = await page.evaluate(async () => {
 			const box = document.getElementById('box');
 			const style = window.getComputedStyle(box);
 			return style.backgroundColor;
+		});
+
+		results.bundlers.push({
+			label: 'native',
+			success: result === 'rgb(0, 128, 0)',
+			result: result,
 		});
 	}
 
 	{
 		await page.goto(`http://localhost:8080/postcss-import.html`);
-		results.postcssImport = await page.evaluate(async () => {
+		const result = await page.evaluate(async () => {
 			const box = document.getElementById('box');
 			const style = window.getComputedStyle(box);
 			return style.backgroundColor;
+		});
+
+		results.bundlers.push({
+			label: 'postcss-import',
+			success: result === 'rgb(0, 128, 0)',
+			result: result,
+		});
+	}
+
+	{
+		await page.goto(`http://localhost:8080/lightningcss.html`);
+		const result = await page.evaluate(async () => {
+			const box = document.getElementById('box');
+			const style = window.getComputedStyle(box);
+			return style.backgroundColor;
+		});
+
+		results.bundlers.push({
+			label: 'lightningcss',
+			success: result === 'rgb(0, 128, 0)',
+			result: result,
+		});
+	}
+
+	{
+		await page.goto(`http://localhost:8080/esbuild.html`);
+		const result = await page.evaluate(async () => {
+			const box = document.getElementById('box');
+			const style = window.getComputedStyle(box);
+			return style.backgroundColor;
+		});
+
+		results.bundlers.push({
+			label: 'esbuild',
+			success: result === 'rgb(0, 128, 0)',
+			result: result,
 		});
 	}
 
@@ -151,8 +236,6 @@ export async function createTest(browser, testPath) {
 		throw new Error(errorMessage);
 	}
 
-	assert.deepStrictEqual(results, {
-		native: 'rgb(0, 128, 0)',
-		postcssImport: 'rgb(0, 128, 0)',
-	});
+	results.success = results.bundlers.every((x => x.success === true));
+	return results;
 }

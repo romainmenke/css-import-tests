@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/romainmenke/css-import-tests#readme",
   "dependencies": {
+    "esbuild": "^0.18.13",
+    "lightningcss": "^1.21.5",
     "postcss": "^8.4.26",
     "postcss-import": "^15.1.0",
     "puppeteer": "^20.8.2"

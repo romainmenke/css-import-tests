@@ -32,6 +32,14 @@ for (const result of results) {
 		hasFailures = true;
 
 		console.error(`FAIL - ${result.label}`)
+		
+		for (const bundler of result.bundlers) {
+			if (bundler.success) {
+				console.error(`  OK   - ${bundler.label}`)
+			} else {
+				console.error(`  FAIL - ${bundler.label}`)
+			}
+		}
 
 		if (process.env.DEBUG) {
 			console.error(result.error);
