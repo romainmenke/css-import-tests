@@ -34,7 +34,23 @@ function html(bundle = 'native') {
 `
 }
 
-export async function createTest(browser, port, testPath) {
+export async function createTestSafe(browser, testPath) {
+	try {
+		await createTest(browser, testPath);
+		return {
+			label: testPath.slice(1).join('/'),
+			success: true,
+		}
+	} catch (e) {
+		return {
+			label: testPath.slice(1).join('/'),
+			success: false,
+			error: e,
+		}
+	}
+}
+
+export async function createTest(browser, testPath) {
 	const server = http.createServer(async (req, res) => {
 		const parsedUrl = new URL(req.url, 'http://localhost:8080');
 		const pathname = parsedUrl.pathname;
@@ -93,13 +109,14 @@ export async function createTest(browser, port, testPath) {
 		}
 	});
 
-	server.listen(port);
+	server.listen(8080);
 
 	const page = await browser.newPage();
 	await page.setCacheEnabled(false);
 
+	let errorMessage = null;
 	page.on('pageerror', (msg) => {
-		throw msg;
+		errorMessage = msg;
 	});
 
 	let results = {
@@ -108,7 +125,7 @@ export async function createTest(browser, port, testPath) {
 	}
 
 	{
-		await page.goto(`http://localhost:${port}/native.html`);
+		await page.goto(`http://localhost:8080/native.html`);
 		results.native = await page.evaluate(async () => {
 			const box = document.getElementById('box');
 			const style = window.getComputedStyle(box);
@@ -117,7 +134,7 @@ export async function createTest(browser, port, testPath) {
 	}
 
 	{
-		await page.goto(`http://localhost:${port}/postcss-import.html`);
+		await page.goto(`http://localhost:8080/postcss-import.html`);
 		results.postcssImport = await page.evaluate(async () => {
 			const box = document.getElementById('box');
 			const style = window.getComputedStyle(box);
@@ -125,11 +142,17 @@ export async function createTest(browser, port, testPath) {
 		});
 	}
 
+	await page.close();
+
+	await server.closeAllConnections();
+	await server.close();
+
+	if (errorMessage) {
+		throw new Error(errorMessage);
+	}
+
 	assert.deepStrictEqual(results, {
 		native: 'rgb(0, 128, 0)',
 		postcssImport: 'rgb(0, 128, 0)',
 	});
-
-	await page.close();
-	await server.close();
 }
