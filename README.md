@@ -32,3 +32,12 @@ If anyone had checked any basic case against a browser they would have been equa
 There are two major issues :
 - bundlers want to optimize for file size
 - bundlers want to support importing CSS from npm packages
+
+## Contributing
+
+Any test contributions are welcome!
+
+You can open an issue and describe the case you want to test, or you can open a PR with a new test.
+
+I don't care about technical purity, formatting, duplicates, ...  
+Anything that increases test coverage is very much appreciated.
