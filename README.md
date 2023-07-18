@@ -11,7 +11,7 @@ It also blurs the line between feature and bug.
 These tests are intended to surface such differences.
 
 Currently this checks :
-- Chrome (a.k.a. native)
+- Firefox (a.k.a. native)
 - `postcss-import`
 - `lightningcss`
 - `esbuild`
