@@ -6,7 +6,23 @@ import postcss from 'postcss';
 import postcssImport from 'postcss-import';
 import postcssImportDev from '../postcss-import/index.js';
 import { bundle as lightningcss } from 'lightningcss';
-import { promises as fsp } from 'fs';
+import crypto from 'crypto';
+
+function hashLayerName(index, rootFilename) {
+	if (!rootFilename) {
+		return `import-anon-layer-${index}`;
+	}
+
+	// A stable, deterministic and unique layer name:
+	// - layer index
+	// - relative rootFilename to current working directory
+	return `import-anon-layer-${crypto
+		.createHash('sha256')
+		.update(`${index}-${rootFilename}`)
+		.digest('hex')
+		.slice(0, 12)}`;
+}
+
 
 function html(bundle = 'native') {
 	return `<!DOCTYPE html>
@@ -53,6 +69,8 @@ export async function createTestSafe(browser, testPath) {
 }
 
 export async function createTest(browser, testPath) {
+	let requestHandlerError = null;
+
 	const server = http.createServer(async (req, res) => {
 		const parsedUrl = new URL(req.url, 'http://localhost:8080');
 		const pathname = parsedUrl.pathname;
@@ -86,7 +104,7 @@ export async function createTest(browser, testPath) {
 
 				switch (bundle) {
 					case 'native':
-						res.end(await fsp.readFile(path.join(...testPath, 'style.css'), 'utf8'));
+						res.end(await fs.readFile(path.join(...testPath, 'style.css'), 'utf8'));
 						return;
 
 					case 'postcss-import':
@@ -94,15 +112,18 @@ export async function createTest(browser, testPath) {
 							process.env.DEV && postcssImportDev ? postcssImportDev({
 								path: [path.join(...testPath)],
 								skipDuplicates: false,
+								nameLayer: hashLayerName,
 							}) : postcssImport({
 								path: [path.join(...testPath)],
 								skipDuplicates: false,
 							}),
-						]).process(await fsp.readFile(path.join(...testPath, 'style.css'), 'utf8'), {
+						]).process(await fs.readFile(path.join(...testPath, 'style.css'), 'utf8'), {
 							from: 'style.css',
 						}).then((result) => {
 							res.end(result.css);
 						}).catch((e) => {
+							requestHandlerError = e;
+
 							res.end('');
 						});
 						return;
@@ -115,33 +136,39 @@ export async function createTest(browser, testPath) {
 
 							res.end(code);
 						} catch (e) {
+							requestHandlerError = e;
+
 							res.end('');
 						}
 
 						return;
 					case 'esbuild':
 						try {
-							await esbuild.build({
+							const esBundle = await esbuild.build({
 								entryPoints: [path.join(...testPath, 'style.css')],
-								outfile: path.join(...testPath, 'esbuild.css'),
 								bundle: true,
+								logLevel: 'silent',
+								write: false
 							})
 
-							res.end(await fsp.readFile(path.join(...testPath, 'esbuild.css'), 'utf8'));
-							await fs.rm(path.join(...testPath, 'esbuild.css'));
+							res.end(esBundle.outputFiles[0].text);
 						} catch (e) {
+							requestHandlerError = e;
+
 							res.end('');
 						}
-						
 
 						return;
 				}
+
+				res.end('');
+				return;
 
 			default:
 				if (pathname.endsWith('.css')) {
 					res.setHeader('Content-type', 'text/css');
 					res.writeHead(200);
-					res.end(await fsp.readFile(path.join(...testPath, pathname.slice(1)), 'utf8'));
+					res.end(await fs.readFile(path.join(...testPath, pathname.slice(1)), 'utf8'));
 					return;
 				}
 
@@ -152,14 +179,19 @@ export async function createTest(browser, testPath) {
 		}
 	});
 
+	let serverError = null;
+	server.on('error', (e) => {
+		serverError = e;
+	});
+
 	server.listen(8080);
 
 	const page = await browser.newPage();
 	await page.setCacheEnabled(false);
-
-	let errorMessage = null;
+	
+	let pageError = null;
 	page.on('pageerror', (msg) => {
-		errorMessage = msg;
+		pageError = new Error(msg);
 	});
 
 	let results = {
@@ -232,10 +264,7 @@ export async function createTest(browser, testPath) {
 	await server.closeAllConnections();
 	await server.close();
 
-	if (errorMessage) {
-		throw new Error(errorMessage);
-	}
-
-	results.success = results.bundlers.every((x => x.success === true));
+	results.error = serverError || pageError || requestHandlerError;
+	results.success = !results.error && results.bundlers.every((x => x.success === true));
 	return results;
 }

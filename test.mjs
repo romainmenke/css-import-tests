@@ -26,20 +26,13 @@ for (const testCase of testCases) {
 	);
 }
 
-let hasFailures = false
+let failureCount = 0;
 for (const result of results) {
 	if (result.success === false) {
-		hasFailures = true;
+		failureCount++;
 
 		console.error(`FAIL - ${result.label}`)
-		
-		for (const bundler of result.bundlers) {
-			if (bundler.success) {
-				console.error(`  OK   - ${bundler.label}`)
-			} else {
-				console.error(`  FAIL - ${bundler.label}`)
-			}
-		}
+		console.table(result.bundlers)
 
 		if (process.env.DEBUG) {
 			console.error(result.error);
@@ -53,6 +46,7 @@ for (const result of results) {
 
 await browser.close()
 
-if (hasFailures) {
+if (failureCount > 0) {
+	console.error(`\n${failureCount} / ${testCases.length} test(s) failed in at least one bundler.`);
 	process.exit(1);
 }
