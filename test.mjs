@@ -8,6 +8,7 @@ const { createTestSafe } = await import('./util/test.mjs')
 
 const browser = await puppeteer.launch({
 	headless: 'new',
+	product: 'firefox',
 });
 
 const testCases = (await fs.readdir('./tests', { withFileTypes: true, recursive: true })).filter(dirent => {
@@ -28,12 +29,17 @@ for (const testCase of testCases) {
 
 let failureCount = 0;
 let postcssImportFailureCount = 0;
+let nativeFailureCount = 0;
 for (const result of results) {
 	if (result.success === false) {
 		failureCount++;
 
 		if (!result.bundlers.find((x => x.label === 'postcss-import')).success) {
 			postcssImportFailureCount++;
+		}
+
+		if (!result.bundlers.find((x => x.label === 'native')).success) {
+			nativeFailureCount++;
 		}
 
 		console.error(`FAIL - ${result.label}`)
@@ -54,5 +60,6 @@ await browser.close()
 if (failureCount > 0) {
 	console.error(`\n${failureCount} / ${testCases.length} test(s) failed in at least one bundler.`);
 	console.error(`${postcssImportFailureCount} / ${testCases.length} test(s) failed in postcss-import.`);
+	console.error(`${nativeFailureCount} / ${testCases.length} test(s) failed in an actual browser.`);
 	process.exit(1);
 }

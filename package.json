@@ -4,7 +4,8 @@
   "description": "Tests for @import in CSS",
   "private": true,
   "scripts": {
-    "test": "node ./test.mjs"
+    "test": "node ./test.mjs",
+    "install:with-firefox": "PUPPETEER_PRODUCT=firefox npm rebuild puppeteer"
   },
   "repository": {
     "type": "git",

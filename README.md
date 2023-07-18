@@ -18,8 +18,11 @@ Currently this checks :
 
 Current state :
 
-19 / 25 test(s) failed in at least one bundler.
-0 / 25 test(s) failed in postcss-import.
+```text
+28 / 42 test(s) failed in at least one bundler.
+ 0 / 42 test(s) failed in postcss-import.
+ 0 / 42 test(s) failed in an actual browser.
+```
 
 ## Types of failures
 
