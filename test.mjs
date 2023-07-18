@@ -27,9 +27,14 @@ for (const testCase of testCases) {
 }
 
 let failureCount = 0;
+let postcssImportFailureCount = 0;
 for (const result of results) {
 	if (result.success === false) {
 		failureCount++;
+
+		if (!result.bundlers.find((x => x.label === 'postcss-import')).success) {
+			postcssImportFailureCount++;
+		}
 
 		console.error(`FAIL - ${result.label}`)
 		console.table(result.bundlers)
@@ -48,5 +53,6 @@ await browser.close()
 
 if (failureCount > 0) {
 	console.error(`\n${failureCount} / ${testCases.length} test(s) failed in at least one bundler.`);
+	console.error(`${postcssImportFailureCount} / ${testCases.length} test(s) failed in postcss-import.`);
 	process.exit(1);
 }

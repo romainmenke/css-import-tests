@@ -62,6 +62,7 @@ export async function createTestSafe(browser, testPath) {
 	} catch (e) {
 		return {
 			label: testPath.slice(1).join('/'),
+			bundlers: [],
 			success: false,
 			error: e,
 		}
@@ -178,6 +179,8 @@ export async function createTest(browser, testPath) {
 				break;
 		}
 	});
+
+	server.timeout = 100;
 
 	let serverError = null;
 	server.on('error', (e) => {
