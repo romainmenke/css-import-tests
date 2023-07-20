@@ -19,9 +19,9 @@ Currently this checks :
 Current state :
 
 ```text
-30 / 44 test(s) failed in at least one bundler.
- 0 / 44 test(s) failed in postcss-import.
- 0 / 44 test(s) failed in an actual browser.
+32 / 49 test(s) failed in at least one bundler.
+ 0 / 49 test(s) failed in postcss-import.
+ 0 / 49 test(s) failed in an actual browser.
 ```
 
 ## Types of failures
