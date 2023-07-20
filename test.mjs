@@ -6,9 +6,13 @@ import './prepare-postcss-import-dev.mjs';
 
 const { createTestSafe } = await import('./util/test.mjs')
 
-const browser = await puppeteer.launch({
+const firefox = await puppeteer.launch({
 	headless: 'new',
 	product: 'firefox',
+});
+
+const chrome = await puppeteer.launch({
+	headless: 'new',
 });
 
 const testCases = (await fs.readdir('./tests', { withFileTypes: true, recursive: true })).filter(dirent => {
@@ -22,9 +26,15 @@ testCases.sort();
 const results = [];
 
 for (const testCase of testCases) {
-	results.push(
-		await createTestSafe(browser, ['tests', ...testCase.split(path.sep)])
-	);
+	if (testCase.includes('cycles/006') || testCase.includes('cycles/007') || testCase.includes('cycles/008')) {
+		results.push(
+			await createTestSafe(chrome, ['tests', ...testCase.split(path.sep)])
+		);
+	} else {
+		results.push(
+			await createTestSafe(firefox, ['tests', ...testCase.split(path.sep)])
+		);
+	}
 }
 
 let failureCount = 0;
@@ -55,7 +65,8 @@ for (const result of results) {
 	console.log(`OK   - ${result.label}`)
 }
 
-await browser.close()
+await firefox.close()
+await chrome.close()
 
 if (failureCount > 0) {
 	console.error(`\n${failureCount} / ${testCases.length} test(s) failed in at least one bundler.`);
