@@ -111,11 +111,9 @@ export async function createTest(browser, testPath) {
 					case 'postcss-import':
 						await postcss([
 							process.env.DEV && postcssImportDev ? postcssImportDev({
-								path: [path.join(...testPath)],
 								skipDuplicates: false,
 								nameLayer: hashLayerName,
 							}) : postcssImport({
-								path: [path.join(...testPath)],
 								skipDuplicates: false,
 							}),
 						]).process(await fs.readFile(path.join(...testPath, 'style.css'), 'utf8'), {
