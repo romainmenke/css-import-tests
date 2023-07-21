@@ -119,7 +119,7 @@ export async function createTest(browser, testPath) {
 								skipDuplicates: false,
 							}),
 						]).process(await fs.readFile(path.join(...testPath, 'style.css'), 'utf8'), {
-							from: 'style.css',
+							from: path.join(...testPath, 'style.css'),
 						}).then((result) => {
 							res.end(result.css);
 						}).catch((e) => {
