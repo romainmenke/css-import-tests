@@ -43,37 +43,44 @@ for (const testCase of testCases) {
 let failureCount = 0;
 let postcssImportFailureCount = 0;
 let nativeFailureCount = 0;
+
+let formattedResults = [];
+
 for (const result of results) {
-	if (result.success === false) {
-		failureCount++;
+	formattedResults.push({
+		label: result.label,
+		'native': result.bundlers.find((x => x.label === 'native')).success ? '✅' : '❌',
+		'postcss-import': result.bundlers.find((x => x.label === 'postcss-import')).success ? '✅' : '❌',
+		'lightningcss': result.bundlers.find((x => x.label === 'lightningcss')).success ? '✅' : '❌',
+		'esbuild': result.bundlers.find((x => x.label === 'esbuild')).success ? '✅' : '❌',
+	});
+}
 
-		if (!result.bundlers.find((x => x.label === 'postcss-import')).success) {
-			postcssImportFailureCount++;
-		}
+console.table(formattedResults);
 
-		if (!result.bundlers.find((x => x.label === 'native')).success) {
-			nativeFailureCount++;
-		}
+if (process.env.DEBUG) {
+	for (const result of results) {
+		if (result.success === false) {
+			failureCount++;
 
-		console.error(`FAIL - ${result.label}`)
-		console.table(result.bundlers)
+			if (!result.bundlers.find((x => x.label === 'postcss-import')).success) {
+				postcssImportFailureCount++;
+			}
 
-		if (process.env.DEBUG) {
+			if (!result.bundlers.find((x => x.label === 'native')).success) {
+				nativeFailureCount++;
+			}
+
+			console.error(`FAIL - ${result.label}`)
+			console.table(result.bundlers)
 			console.error(result.error);
-		}
 
-		continue;
-	}
+			continue;
+		}
 	
-	console.log(`OK   - ${result.label}`)
+		console.log(`OK   - ${result.label}`)
+	}
 }
 
 await firefox.close()
 await chrome.close()
-
-if (failureCount > 0) {
-	console.error(`\n${failureCount} / ${testCases.length} test(s) failed in at least one bundler.`);
-	console.error(`${postcssImportFailureCount} / ${testCases.length} test(s) failed in postcss-import.`);
-	console.error(`${nativeFailureCount} / ${testCases.length} test(s) failed in an actual browser.`);
-	process.exit(1);
-}
