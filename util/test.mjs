@@ -133,6 +133,10 @@ export async function createTest(browser, testPath) {
 								minify: false
 							});
 
+							console.log('----------------');
+							console.log(`---- ${ testPath } ------`);
+							console.log(code.toString());
+
 							res.end(code);
 						} catch (e) {
 							requestHandlerError = e;
