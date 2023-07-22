@@ -3,12 +3,12 @@
 
 @layer beta {
 	.box {
-		background-color: red;
+		background-color: green;
 	}
 }
 
 @layer alpha {
 	.box {
-		background-color: green;
+		background-color: red;
 	}
 }
