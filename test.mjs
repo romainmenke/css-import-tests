@@ -46,17 +46,16 @@ let nativeFailureCount = 0;
 
 let formattedResults = [];
 
+console.log(`| Test | native | postcss-import | lightningcss | esbuild |`);
+console.log(`| ---- | ------ | -------------- | ------------ | ------- |`);
 for (const result of results) {
-	formattedResults.push({
-		label: result.label,
-		'native': result.bundlers.find((x => x.label === 'native')).success ? '✅' : '❌',
-		'postcss-import': result.bundlers.find((x => x.label === 'postcss-import')).success ? '✅' : '❌',
-		'lightningcss': result.bundlers.find((x => x.label === 'lightningcss')).success ? '✅' : '❌',
-		'esbuild': result.bundlers.find((x => x.label === 'esbuild')).success ? '✅' : '❌',
-	});
-}
+	const nativeResult = result.bundlers.find((x => x.label === 'native')).success ? '✅' : '❌';
+	const postcssImportResult = result.bundlers.find((x => x.label === 'postcss-import')).success ? '✅' : '❌';
+	const lightningcssResult = result.bundlers.find((x => x.label === 'lightningcss')).success ? '✅' : '❌';
+	const esbuildResult = result.bundlers.find((x => x.label === 'esbuild')).success ? '✅' : '❌';
 
-console.table(formattedResults);
+	console.log(`| ${result.label} | ${nativeResult} | ${postcssImportResult} | ${lightningcssResult} | ${esbuildResult} |`);
+}
 
 if (process.env.DEBUG) {
 	for (const result of results) {

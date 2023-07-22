@@ -18,59 +18,59 @@ Currently this checks :
 
 Current state :
 
-│ (index) │             label             │ native │ postcss-import │ lightningcss │ esbuild │
-├─────────┼───────────────────────────────┼────────┼────────────────┼──────────────┼─────────┤
-│    0    │      '001/absolute-url'       │  '✅'  │      '✅'      │     '❌'     │  '✅'   │
-│    1    │         '001/default'         │  '✅'  │      '✅'      │     '✅'     │  '✅'   │
-│    2    │      '001/relative-url'       │  '✅'  │      '✅'      │     '✅'     │  '✅'   │
-│    3    │       'at-charset/001'        │  '✅'  │      '✅'      │     '✅'     │  '✅'   │
-│    4    │      'at-keyframes/001'       │  '✅'  │      '✅'      │     '✅'     │  '❌'   │
-│    5    │        'at-layer/001'         │  '✅'  │      '✅'      │     '❌'     │  '❌'   │
-│    6    │        'at-layer/002'         │  '✅'  │      '✅'      │     '✅'     │  '❌'   │
-│    7    │        'at-layer/003'         │  '✅'  │      '✅'      │     '❌'     │  '❌'   │
-│    8    │        'at-layer/004'         │  '✅'  │      '✅'      │     '✅'     │  '✅'   │
-│    9    │        'at-layer/005'         │  '✅'  │      '✅'      │     '✅'     │  '❌'   │
-│   10    │        'at-layer/006'         │  '✅'  │      '✅'      │     '✅'     │  '❌'   │
-│   11    │  'at-media/001/absolute-url'  │  '✅'  │      '✅'      │     '❌'     │  '✅'   │
-│   12    │    'at-media/001/default'     │  '✅'  │      '✅'      │     '✅'     │  '❌'   │
-│   13    │        'at-media/002'         │  '✅'  │      '✅'      │     '✅'     │  '❌'   │
-│   14    │        'at-media/003'         │  '✅'  │      '✅'      │     '✅'     │  '❌'   │
-│   15    │        'at-media/004'         │  '✅'  │      '✅'      │     '✅'     │  '❌'   │
-│   16    │        'at-media/005'         │  '✅'  │      '✅'      │     '✅'     │  '❌'   │
-│   17    │        'at-media/006'         │  '✅'  │      '✅'      │     '✅'     │  '❌'   │
-│   18    │        'at-media/007'         │  '✅'  │      '✅'      │     '✅'     │  '❌'   │
-│   19    │       'at-supports/001'       │  '✅'  │      '✅'      │     '✅'     │  '❌'   │
-│   20    │       'at-supports/002'       │  '✅'  │      '✅'      │     '✅'     │  '❌'   │
-│   21    │       'at-supports/003'       │  '✅'  │      '✅'      │     '✅'     │  '❌'   │
-│   22    │         'cycles/001'          │  '✅'  │      '✅'      │     '❌'     │  '❌'   │
-│   23    │         'cycles/002'          │  '✅'  │      '✅'      │     '❌'     │  '✅'   │
-│   24    │         'cycles/003'          │  '✅'  │      '✅'      │     '❌'     │  '✅'   │
-│   25    │         'cycles/004'          │  '✅'  │      '✅'      │     '✅'     │  '✅'   │
-│   26    │         'cycles/005'          │  '✅'  │      '✅'      │     '✅'     │  '✅'   │
-│   27    │         'cycles/006'          │  '✅'  │      '✅'      │     '✅'     │  '✅'   │
-│   28    │         'cycles/007'          │  '✅'  │      '✅'      │     '✅'     │  '❌'   │
-│   29    │         'cycles/008'          │  '✅'  │      '✅'      │     '✅'     │  '❌'   │
-│   30    │        'data-urls/001'        │  '✅'  │      '✅'      │     '❌'     │  '✅'   │
-│   31    │        'data-urls/002'        │  '✅'  │      '✅'      │     '❌'     │  '✅'   │
-│   32    │        'data-urls/003'        │  '✅'  │      '✅'      │     '❌'     │  '✅'   │
-│   33    │        'data-urls/004'        │  '✅'  │      '✅'      │     '❌'     │  '❌'   │
-│   34    │        'data-urls/005'        │  '✅'  │      '✅'      │     '❌'     │  '✅'   │
-│   35    │        'data-urls/006'        │  '✅'  │      '✅'      │     '❌'     │  '✅'   │
-│   36    │       'duplicates/001'        │  '✅'  │      '✅'      │     '✅'     │  '✅'   │
-│   37    │       'duplicates/002'        │  '✅'  │      '✅'      │     '✅'     │  '✅'   │
-│   38    │     'relative-paths/001'      │  '✅'  │      '✅'      │     '✅'     │  '✅'   │
-│   39    │     'relative-paths/002'      │  '✅'  │      '✅'      │     '✅'     │  '✅'   │
-│   40    │ 'url-format/001/absolute-url' │  '✅'  │      '✅'      │     '❌'     │  '✅'   │
-│   41    │   'url-format/001/default'    │  '✅'  │      '✅'      │     '✅'     │  '✅'   │
-│   42    │ 'url-format/001/relative-url' │  '✅'  │      '✅'      │     '✅'     │  '✅'   │
-│   43    │ 'url-format/002/absolute-url' │  '✅'  │      '✅'      │     '❌'     │  '✅'   │
-│   44    │   'url-format/002/default'    │  '✅'  │      '✅'      │     '✅'     │  '✅'   │
-│   45    │ 'url-format/002/relative-url' │  '✅'  │      '✅'      │     '✅'     │  '✅'   │
-│   46    │ 'url-format/003/absolute-url' │  '✅'  │      '✅'      │     '❌'     │  '✅'   │
-│   47    │   'url-format/003/default'    │  '✅'  │      '✅'      │     '✅'     │  '✅'   │
-│   48    │ 'url-format/003/relative-url' │  '✅'  │      '✅'      │     '✅'     │  '✅'   │
-│   49    │      'url-fragments/001'      │  '✅'  │      '✅'      │     '❌'     │  '✅'   │
-│   50    │      'url-fragments/002'      │  '✅'  │      '✅'      │     '❌'     │  '✅'   │
+| Test | native | postcss-import | lightningcss | esbuild |
+| ---- | ------ | -------------- | ------------ | ------- |
+| 001/absolute-url | ✅ | ✅ | ❌ | ✅ |
+| 001/default | ✅ | ✅ | ✅ | ✅ |
+| 001/relative-url | ✅ | ✅ | ✅ | ✅ |
+| at-charset/001 | ✅ | ✅ | ✅ | ✅ |
+| at-keyframes/001 | ✅ | ✅ | ✅ | ❌ |
+| at-layer/001 | ✅ | ✅ | ❌ | ❌ |
+| at-layer/002 | ✅ | ✅ | ✅ | ❌ |
+| at-layer/003 | ✅ | ✅ | ❌ | ❌ |
+| at-layer/004 | ✅ | ✅ | ✅ | ✅ |
+| at-layer/005 | ✅ | ✅ | ✅ | ❌ |
+| at-layer/006 | ✅ | ✅ | ✅ | ❌ |
+| at-media/001/absolute-url | ✅ | ✅ | ❌ | ✅ |
+| at-media/001/default | ✅ | ✅ | ✅ | ❌ |
+| at-media/002 | ✅ | ✅ | ✅ | ❌ |
+| at-media/003 | ✅ | ✅ | ✅ | ❌ |
+| at-media/004 | ✅ | ✅ | ✅ | ❌ |
+| at-media/005 | ✅ | ✅ | ✅ | ❌ |
+| at-media/006 | ✅ | ✅ | ✅ | ❌ |
+| at-media/007 | ✅ | ✅ | ✅ | ❌ |
+| at-supports/001 | ✅ | ✅ | ✅ | ❌ |
+| at-supports/002 | ✅ | ✅ | ✅ | ❌ |
+| at-supports/003 | ✅ | ✅ | ✅ | ❌ |
+| cycles/001 | ✅ | ✅ | ❌ | ❌ |
+| cycles/002 | ✅ | ✅ | ❌ | ✅ |
+| cycles/003 | ✅ | ✅ | ❌ | ✅ |
+| cycles/004 | ✅ | ✅ | ✅ | ✅ |
+| cycles/005 | ✅ | ✅ | ✅ | ✅ |
+| cycles/006 | ✅ | ✅ | ✅ | ✅ |
+| cycles/007 | ✅ | ✅ | ✅ | ❌ |
+| cycles/008 | ✅ | ✅ | ❌ | ❌ |
+| data-urls/001 | ✅ | ✅ | ❌ | ✅ |
+| data-urls/002 | ✅ | ✅ | ❌ | ✅ |
+| data-urls/003 | ✅ | ✅ | ❌ | ✅ |
+| data-urls/004 | ✅ | ✅ | ❌ | ❌ |
+| data-urls/005 | ✅ | ✅ | ❌ | ✅ |
+| data-urls/006 | ✅ | ✅ | ❌ | ✅ |
+| duplicates/001 | ✅ | ✅ | ✅ | ✅ |
+| duplicates/002 | ✅ | ✅ | ✅ | ✅ |
+| relative-paths/001 | ✅ | ✅ | ✅ | ✅ |
+| relative-paths/002 | ✅ | ✅ | ✅ | ✅ |
+| url-format/001/absolute-url | ✅ | ✅ | ❌ | ✅ |
+| url-format/001/default | ✅ | ✅ | ✅ | ✅ |
+| url-format/001/relative-url | ✅ | ✅ | ✅ | ✅ |
+| url-format/002/absolute-url | ✅ | ✅ | ❌ | ✅ |
+| url-format/002/default | ✅ | ✅ | ✅ | ✅ |
+| url-format/002/relative-url | ✅ | ✅ | ✅ | ✅ |
+| url-format/003/absolute-url | ✅ | ✅ | ❌ | ✅ |
+| url-format/003/default | ✅ | ✅ | ✅ | ✅ |
+| url-format/003/relative-url | ✅ | ✅ | ✅ | ✅ |
+| url-fragments/001 | ✅ | ✅ | ❌ | ✅ |
+| url-fragments/002 | ✅ | ✅ | ❌ | ✅ |
 
 ## Types of failures
 
