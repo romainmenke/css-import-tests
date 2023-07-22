@@ -63,6 +63,7 @@ Current state :
 | duplicates/002 | ✅ | ✅ | ✅ | ✅ |
 | relative-paths/001 | ✅ | ✅ | ✅ | ✅ |
 | relative-paths/002 | ✅ | ✅ | ✅ | ✅ |
+| subresource/001 | ✅ | ❌ | ❌ | ❌ |
 | url-format/001/absolute-url | ✅ | ✅ | ❌ | ✅ |
 | url-format/001/default | ✅ | ✅ | ✅ | ✅ |
 | url-format/001/relative-url | ✅ | ✅ | ✅ | ✅ |

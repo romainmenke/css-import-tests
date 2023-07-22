@@ -2,6 +2,7 @@ import * as esbuild from 'esbuild'
 import http from 'http';
 import path from 'path';
 import fs from 'fs/promises';
+import fsSync from 'fs';
 import postcss from 'postcss';
 import postcssImport from 'postcss-import';
 import postcssImportDev from '../postcss-import/index.js';
@@ -71,6 +72,12 @@ export async function createTestSafe(browser, testPath) {
 
 export async function createTest(browser, testPath) {
 	let requestHandlerError = null;
+	let imageWasRequested = false;
+
+	const resetState = () => {
+		requestHandlerError = null;
+		imageWasRequested = false;
+	}
 
 	const server = http.createServer(async (req, res) => {
 		const parsedUrl = new URL(req.url, 'http://localhost:8080');
@@ -165,10 +172,22 @@ export async function createTest(browser, testPath) {
 
 			default:
 				if (pathname.endsWith('.css')) {
-					res.setHeader('Content-type', 'text/css');
-					res.writeHead(200);
-					res.end(await fs.readFile(path.join(...testPath, pathname.slice(1)), 'utf8'));
-					return;
+					if (fsSync.existsSync(path.join(...testPath, pathname.slice(1)))) {
+						res.setHeader('Content-type', 'text/css');
+						res.writeHead(200);
+						res.end(await fs.readFile(path.join(...testPath, pathname.slice(1)), 'utf8'));
+						return;
+					}
+				}
+
+				if (pathname.endsWith('.png')) {
+					if (fsSync.existsSync(path.join(...testPath, pathname.slice(1)))) {
+						imageWasRequested = true;
+						res.setHeader('Content-type', 'image/png');
+						res.writeHead(200);
+						res.end(await fs.readFile(path.join(...testPath, pathname.slice(1)), 'utf8'));
+						return;
+					}
 				}
 
 				res.setHeader('Content-type', 'text/plain');
@@ -201,61 +220,85 @@ export async function createTest(browser, testPath) {
 	}
 
 	{
+		resetState();
 		await page.goto(`http://localhost:8080/native.html`);
 		const result = await page.evaluate(async () => {
 			const box = document.getElementById('box');
 			const style = window.getComputedStyle(box);
-			return style.backgroundColor;
+			return [style.backgroundColor, style.backgroundImage];
 		});
 
 		results.bundlers.push({
 			label: 'native',
-			success: result === 'rgb(0, 128, 0)',
+			success: (
+				result[0] === 'rgb(0, 128, 0)' ||
+				(
+					imageWasRequested && result[1].includes('/green.png')
+				)
+			),
 			result: result,
 		});
 	}
 
 	{
+		resetState();
 		await page.goto(`http://localhost:8080/postcss-import.html`);
 		const result = await page.evaluate(async () => {
 			const box = document.getElementById('box');
 			const style = window.getComputedStyle(box);
-			return style.backgroundColor;
+			return [style.backgroundColor, style.backgroundImage];
 		});
 
 		results.bundlers.push({
 			label: 'postcss-import',
-			success: result === 'rgb(0, 128, 0)',
+			success: (
+				result[0] === 'rgb(0, 128, 0)' ||
+				(
+					imageWasRequested && result[1].includes('/green.png')
+				)
+			),
 			result: result,
 		});
 	}
 
 	{
+		resetState();
 		await page.goto(`http://localhost:8080/lightningcss.html`);
 		const result = await page.evaluate(async () => {
 			const box = document.getElementById('box');
 			const style = window.getComputedStyle(box);
-			return style.backgroundColor;
+			return [style.backgroundColor, style.backgroundImage];
 		});
 
 		results.bundlers.push({
 			label: 'lightningcss',
-			success: result === 'rgb(0, 128, 0)',
+			success: (
+				result[0] === 'rgb(0, 128, 0)' ||
+				(
+					imageWasRequested && result[1].includes('/green.png')
+				)
+			),
 			result: result,
 		});
 	}
 
 	{
+		resetState();
 		await page.goto(`http://localhost:8080/esbuild.html`);
 		const result = await page.evaluate(async () => {
 			const box = document.getElementById('box');
 			const style = window.getComputedStyle(box);
-			return style.backgroundColor;
+			return [style.backgroundColor, style.backgroundImage];
 		});
 
 		results.bundlers.push({
 			label: 'esbuild',
-			success: result === 'rgb(0, 128, 0)',
+			success: (
+				result[0] === 'rgb(0, 128, 0)' ||
+				(
+					imageWasRequested && result[1].includes('/green.png')
+				)
+			),
 			result: result,
 		});
 	}
