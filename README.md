@@ -45,7 +45,7 @@ Current state :
 | at-supports/003 | ✅ | ✅ | ✅ | ❌ |
 | at-supports/004 | ✅ | ✅ | ✅ | ❌ |
 | at-supports/005 | ✅ | ✅ | ✅ | ❌ |
-| cycles/001 | ✅ | ✅ | ❌ | ❌ |
+| cycles/001 | ✅ | ❌ | ❌ | ❌ |
 | cycles/002 | ✅ | ✅ | ❌ | ✅ |
 | cycles/003 | ✅ | ✅ | ❌ | ✅ |
 | cycles/004 | ✅ | ✅ | ✅ | ✅ |
@@ -61,6 +61,7 @@ Current state :
 | data-urls/006 | ✅ | ✅ | ❌ | ✅ |
 | duplicates/001 | ✅ | ✅ | ✅ | ✅ |
 | duplicates/002 | ✅ | ✅ | ✅ | ✅ |
+| empty/001 | ✅ | ✅ | ✅ | ✅ |
 | relative-paths/001 | ✅ | ✅ | ✅ | ✅ |
 | relative-paths/002 | ✅ | ✅ | ✅ | ✅ |
 | subresource/001 | ✅ | ❌ | ❌ | ❌ |

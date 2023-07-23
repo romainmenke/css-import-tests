@@ -26,8 +26,6 @@ testCases.sort();
 const results = [];
 
 for (const testCase of testCases) {
-	console.log(`Running ${testCase}`);
-
 	// https://bugzilla.mozilla.org/show_bug.cgi?id=1844683
 	// Ideally we test everything against one browser as we aren't trying to create a second WPT.
 	// Firefox supports `support()` conditions, Chrome better supports cyclic imports.
