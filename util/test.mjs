@@ -7,6 +7,7 @@ import path from 'path';
 import postcss from 'postcss';
 import postcssImport from 'postcss-import';
 import postcssImportDev from '../postcss-import/index.js';
+import postcssRebaseURL from '../postcss-rebase-url/index.mjs'
 import { bundle as lightningcss } from 'lightningcss';
 
 function hashLayerName(index, rootFilename) {
@@ -71,11 +72,18 @@ export async function createTestSafe(browser, testPath) {
 }
 
 export async function createTest(browser, testPath) {
+	let errors = [];
+	let pageError = null;
 	let requestHandlerError = null;
+	let serverError = null;
+
 	let imageWasRequested = false;
 
 	const resetState = () => {
+		pageError = null;
 		requestHandlerError = null;
+		serverError = null;
+
 		imageWasRequested = false;
 	}
 
@@ -90,6 +98,11 @@ export async function createTest(browser, testPath) {
 				res.setHeader('Content-type', 'text/html');
 				res.writeHead(200);
 				res.end(html('native'));
+				return;
+			case '/csstools-postcss-bundle.html':
+				res.setHeader('Content-type', 'text/html');
+				res.writeHead(200);
+				res.end(html('csstools-postcss-bundle'));
 				return;
 			case '/postcss-import.html':
 				res.setHeader('Content-type', 'text/html');
@@ -115,20 +128,36 @@ export async function createTest(browser, testPath) {
 						res.end(await fs.readFile(path.join(...testPath, 'style.css'), 'utf8'));
 						return;
 
-					case 'postcss-import':
+					case 'csstools-postcss-bundle':
 						await postcss([
-							process.env.DEV && postcssImportDev ? postcssImportDev({
+							postcssImportDev({
 								skipDuplicates: false,
 								nameLayer: hashLayerName,
-							}) : postcssImport({
-								skipDuplicates: false,
 							}),
+							postcssRebaseURL(),
 						]).process(await fs.readFile(path.join(...testPath, 'style.css'), 'utf8'), {
 							from: path.join(...testPath, 'style.css'),
+							to: path.join(...testPath, 'style.css'),
 						}).then((result) => {
 							res.end(result.css);
 						}).catch((e) => {
 							requestHandlerError = e;
+							errors.push(requestHandlerError);
+
+							res.end('');
+						});
+						return;
+					case 'postcss-import':
+						await postcss([
+							 postcssImportDev(),
+						]).process(await fs.readFile(path.join(...testPath, 'style.css'), 'utf8'), {
+							from: path.join(...testPath, 'style.css'),
+							to: path.join(...testPath, 'style.css'),
+						}).then((result) => {
+							res.end(result.css);
+						}).catch((e) => {
+							requestHandlerError = e;
+							errors.push(requestHandlerError);
 
 							res.end('');
 						});
@@ -143,6 +172,7 @@ export async function createTest(browser, testPath) {
 							res.end(code);
 						} catch (e) {
 							requestHandlerError = e;
+							errors.push(requestHandlerError);
 
 							res.end('');
 						}
@@ -160,6 +190,7 @@ export async function createTest(browser, testPath) {
 							res.end(esBundle.outputFiles[0].text);
 						} catch (e) {
 							requestHandlerError = e;
+							errors.push(requestHandlerError);
 
 							res.end('');
 						}
@@ -199,9 +230,9 @@ export async function createTest(browser, testPath) {
 
 	server.timeout = 100;
 
-	let serverError = null;
 	server.on('error', (e) => {
 		serverError = e;
+		errors.push(serverError);
 	});
 
 	server.listen(8080);
@@ -209,9 +240,9 @@ export async function createTest(browser, testPath) {
 	const page = await browser.newPage();
 	await page.setCacheEnabled(false);
 	
-	let pageError = null;
 	page.on('pageerror', (msg) => {
 		pageError = new Error(msg);
+		errors.push(pageError);
 	});
 
 	let results = {
@@ -230,7 +261,28 @@ export async function createTest(browser, testPath) {
 
 		results.bundlers.push({
 			label: 'native',
-			success: (
+			success: (!serverError && !pageError && !requestHandlerError) && (
+				result[0] === 'rgb(0, 128, 0)' ||
+				(
+					imageWasRequested && result[1].includes('/green.png')
+				)
+			),
+			result: result,
+		});
+	}
+
+	{
+		resetState();
+		await page.goto(`http://localhost:8080/csstools-postcss-bundle.html`);
+		const result = await page.evaluate(async () => {
+			const box = document.getElementById('box');
+			const style = window.getComputedStyle(box);
+			return [style.backgroundColor, style.backgroundImage];
+		});
+
+		results.bundlers.push({
+			label: 'csstools-postcss-bundle',
+			success: (!serverError && !pageError && !requestHandlerError) && (
 				result[0] === 'rgb(0, 128, 0)' ||
 				(
 					imageWasRequested && result[1].includes('/green.png')
@@ -251,7 +303,7 @@ export async function createTest(browser, testPath) {
 
 		results.bundlers.push({
 			label: 'postcss-import',
-			success: (
+			success: (!serverError && !pageError && !requestHandlerError) && (
 				result[0] === 'rgb(0, 128, 0)' ||
 				(
 					imageWasRequested && result[1].includes('/green.png')
@@ -272,7 +324,7 @@ export async function createTest(browser, testPath) {
 
 		results.bundlers.push({
 			label: 'lightningcss',
-			success: (
+			success: (!serverError && !pageError && !requestHandlerError) && (
 				result[0] === 'rgb(0, 128, 0)' ||
 				(
 					imageWasRequested && result[1].includes('/green.png')
@@ -293,7 +345,7 @@ export async function createTest(browser, testPath) {
 
 		results.bundlers.push({
 			label: 'esbuild',
-			success: (
+			success: (!serverError && !pageError && !requestHandlerError) && (
 				result[0] === 'rgb(0, 128, 0)' ||
 				(
 					imageWasRequested && result[1].includes('/green.png')
@@ -308,7 +360,7 @@ export async function createTest(browser, testPath) {
 	await server.closeAllConnections();
 	await server.close();
 
-	results.error = serverError || pageError || requestHandlerError;
+	results.error = errors.length > 0 ? errors : null;
 	results.success = !results.error && results.bundlers.every((x => x.success === true));
 	return results;
 }

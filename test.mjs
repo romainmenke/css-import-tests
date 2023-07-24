@@ -44,15 +44,16 @@ let failureCount = 0;
 let postcssImportFailureCount = 0;
 let nativeFailureCount = 0;
 
-console.log(`| Test | native | postcss-import | lightningcss | esbuild |`);
-console.log(`| ---- | ------ | -------------- | ------------ | ------- |`);
+console.log(`| Test | native | @csstools/postcss-bundle | postcss-import | lightningcss | esbuild |`);
+console.log(`| ---- | ------ | ------------------------ | -------------- | ------------ | ------- |`);
 for (const result of results) {
 	const nativeResult = result.bundlers.find((x => x.label === 'native')).success ? '✅' : '❌';
+	const csstoolsPostcssBundleResult = result.bundlers.find((x => x.label === 'csstools-postcss-bundle')).success ? '✅' : '❌';
 	const postcssImportResult = result.bundlers.find((x => x.label === 'postcss-import')).success ? '✅' : '❌';
 	const lightningcssResult = result.bundlers.find((x => x.label === 'lightningcss')).success ? '✅' : '❌';
 	const esbuildResult = result.bundlers.find((x => x.label === 'esbuild')).success ? '✅' : '❌';
 
-	console.log(`| ${result.label} | ${nativeResult} | ${postcssImportResult} | ${lightningcssResult} | ${esbuildResult} |`);
+	console.log(`| ${result.label} | ${nativeResult} | ${csstoolsPostcssBundleResult} | ${postcssImportResult} | ${lightningcssResult} | ${esbuildResult} |`);
 }
 
 if (process.env.DEBUG) {

@@ -18,64 +18,64 @@ Currently this checks :
 
 Current state :
 
-| Test | native | postcss-import | lightningcss | esbuild |
-| ---- | ------ | -------------- | ------------ | ------- |
-| 001/absolute-url | ✅ | ✅ | ❌ | ✅ |
-| 001/default | ✅ | ✅ | ✅ | ✅ |
-| 001/relative-url | ✅ | ✅ | ✅ | ✅ |
-| at-charset/001 | ✅ | ✅ | ✅ | ✅ |
-| at-keyframes/001 | ✅ | ✅ | ✅ | ❌ |
-| at-layer/001 | ✅ | ✅ | ❌ | ❌ |
-| at-layer/002 | ✅ | ✅ | ✅ | ❌ |
-| at-layer/003 | ✅ | ✅ | ❌ | ❌ |
-| at-layer/004 | ✅ | ✅ | ✅ | ✅ |
-| at-layer/005 | ✅ | ✅ | ✅ | ❌ |
-| at-layer/006 | ✅ | ✅ | ✅ | ❌ |
-| at-media/001/absolute-url | ✅ | ✅ | ❌ | ✅ |
-| at-media/001/default | ✅ | ✅ | ✅ | ❌ |
-| at-media/002 | ✅ | ✅ | ✅ | ❌ |
-| at-media/003 | ✅ | ✅ | ✅ | ❌ |
-| at-media/004 | ✅ | ✅ | ✅ | ❌ |
-| at-media/005 | ✅ | ✅ | ✅ | ❌ |
-| at-media/006 | ✅ | ✅ | ✅ | ❌ |
-| at-media/007 | ✅ | ✅ | ✅ | ❌ |
-| at-media/008 | ✅ | ✅ | ✅ | ❌ |
-| at-supports/001 | ✅ | ✅ | ✅ | ❌ |
-| at-supports/002 | ✅ | ✅ | ✅ | ❌ |
-| at-supports/003 | ✅ | ✅ | ✅ | ❌ |
-| at-supports/004 | ✅ | ✅ | ✅ | ❌ |
-| at-supports/005 | ✅ | ✅ | ✅ | ❌ |
-| cycles/001 | ✅ | ❌ | ❌ | ❌ |
-| cycles/002 | ✅ | ✅ | ❌ | ✅ |
-| cycles/003 | ✅ | ✅ | ❌ | ✅ |
-| cycles/004 | ✅ | ✅ | ✅ | ✅ |
-| cycles/005 | ✅ | ✅ | ✅ | ✅ |
-| cycles/006 | ✅ | ✅ | ✅ | ✅ |
-| cycles/007 | ✅ | ✅ | ✅ | ❌ |
-| cycles/008 | ✅ | ✅ | ❌ | ❌ |
-| data-urls/001 | ✅ | ✅ | ❌ | ✅ |
-| data-urls/002 | ✅ | ✅ | ❌ | ✅ |
-| data-urls/003 | ✅ | ✅ | ❌ | ✅ |
-| data-urls/004 | ✅ | ✅ | ❌ | ❌ |
-| data-urls/005 | ✅ | ✅ | ❌ | ✅ |
-| data-urls/006 | ✅ | ✅ | ❌ | ✅ |
-| duplicates/001 | ✅ | ✅ | ✅ | ✅ |
-| duplicates/002 | ✅ | ✅ | ✅ | ✅ |
-| empty/001 | ✅ | ✅ | ✅ | ✅ |
-| relative-paths/001 | ✅ | ✅ | ✅ | ✅ |
-| relative-paths/002 | ✅ | ✅ | ✅ | ✅ |
-| subresource/001 | ✅ | ❌ | ❌ | ❌ |
-| url-format/001/absolute-url | ✅ | ✅ | ❌ | ✅ |
-| url-format/001/default | ✅ | ✅ | ✅ | ✅ |
-| url-format/001/relative-url | ✅ | ✅ | ✅ | ✅ |
-| url-format/002/absolute-url | ✅ | ✅ | ❌ | ✅ |
-| url-format/002/default | ✅ | ✅ | ✅ | ✅ |
-| url-format/002/relative-url | ✅ | ✅ | ✅ | ✅ |
-| url-format/003/absolute-url | ✅ | ✅ | ❌ | ✅ |
-| url-format/003/default | ✅ | ✅ | ✅ | ✅ |
-| url-format/003/relative-url | ✅ | ✅ | ✅ | ✅ |
-| url-fragments/001 | ✅ | ✅ | ❌ | ✅ |
-| url-fragments/002 | ✅ | ✅ | ❌ | ✅ |
+| Test | native | @csstools/postcss-bundle | postcss-import | lightningcss | esbuild |
+| ---- | ------ | ------------------------ | -------------- | ------------ | ------- |
+| 001/absolute-url | ✅ | ✅ | ✅ | ❌ | ✅ |
+| 001/default | ✅ | ✅ | ✅ | ✅ | ✅ |
+| 001/relative-url | ✅ | ✅ | ✅ | ✅ | ✅ |
+| at-charset/001 | ✅ | ✅ | ✅ | ✅ | ✅ |
+| at-keyframes/001 | ✅ | ✅ | ✅ | ✅ | ❌ |
+| at-layer/001 | ✅ | ✅ | ✅ | ❌ | ❌ |
+| at-layer/002 | ✅ | ✅ | ✅ | ✅ | ❌ |
+| at-layer/003 | ✅ | ✅ | ✅ | ❌ | ❌ |
+| at-layer/004 | ✅ | ✅ | ❌ | ✅ | ✅ |
+| at-layer/005 | ✅ | ✅ | ✅ | ✅ | ❌ |
+| at-layer/006 | ✅ | ✅ | ✅ | ✅ | ❌ |
+| at-media/001/absolute-url | ✅ | ✅ | ✅ | ❌ | ✅ |
+| at-media/001/default | ✅ | ✅ | ✅ | ✅ | ❌ |
+| at-media/002 | ✅ | ✅ | ✅ | ✅ | ❌ |
+| at-media/003 | ✅ | ✅ | ✅ | ✅ | ❌ |
+| at-media/004 | ✅ | ✅ | ✅ | ✅ | ❌ |
+| at-media/005 | ✅ | ✅ | ✅ | ✅ | ❌ |
+| at-media/006 | ✅ | ✅ | ✅ | ✅ | ❌ |
+| at-media/007 | ✅ | ✅ | ✅ | ✅ | ❌ |
+| at-media/008 | ✅ | ✅ | ✅ | ✅ | ❌ |
+| at-supports/001 | ✅ | ✅ | ✅ | ✅ | ❌ |
+| at-supports/002 | ✅ | ✅ | ✅ | ✅ | ❌ |
+| at-supports/003 | ✅ | ✅ | ✅ | ✅ | ❌ |
+| at-supports/004 | ✅ | ✅ | ✅ | ✅ | ❌ |
+| at-supports/005 | ✅ | ✅ | ✅ | ✅ | ❌ |
+| cycles/001 | ✅ | ✅ | ✅ | ✅ | ✅ |
+| cycles/002 | ✅ | ✅ | ✅ | ❌ | ✅ |
+| cycles/003 | ✅ | ✅ | ✅ | ❌ | ✅ |
+| cycles/004 | ✅ | ✅ | ❌ | ✅ | ✅ |
+| cycles/005 | ✅ | ✅ | ✅ | ✅ | ✅ |
+| cycles/006 | ✅ | ✅ | ❌ | ✅ | ✅ |
+| cycles/007 | ✅ | ✅ | ✅ | ✅ | ❌ |
+| cycles/008 | ✅ | ✅ | ❌ | ✅ | ❌ |
+| data-urls/001 | ✅ | ✅ | ✅ | ❌ | ✅ |
+| data-urls/002 | ✅ | ✅ | ✅ | ❌ | ✅ |
+| data-urls/003 | ✅ | ✅ | ✅ | ❌ | ✅ |
+| data-urls/004 | ✅ | ✅ | ✅ | ❌ | ❌ |
+| data-urls/005 | ✅ | ✅ | ✅ | ❌ | ✅ |
+| data-urls/006 | ✅ | ✅ | ✅ | ❌ | ✅ |
+| duplicates/001 | ✅ | ✅ | ❌ | ✅ | ✅ |
+| duplicates/002 | ✅ | ✅ | ❌ | ✅ | ✅ |
+| empty/001 | ✅ | ✅ | ✅ | ✅ | ✅ |
+| relative-paths/001 | ✅ | ✅ | ✅ | ✅ | ✅ |
+| relative-paths/002 | ✅ | ✅ | ✅ | ✅ | ✅ |
+| subresource/001 | ✅ | ✅ | ❌ | ❌ | ❌ |
+| url-format/001/absolute-url | ✅ | ✅ | ✅ | ❌ | ✅ |
+| url-format/001/default | ✅ | ✅ | ✅ | ✅ | ✅ |
+| url-format/001/relative-url | ✅ | ✅ | ✅ | ✅ | ✅ |
+| url-format/002/absolute-url | ✅ | ✅ | ✅ | ❌ | ✅ |
+| url-format/002/default | ✅ | ✅ | ✅ | ✅ | ✅ |
+| url-format/002/relative-url | ✅ | ✅ | ✅ | ✅ | ✅ |
+| url-format/003/absolute-url | ✅ | ✅ | ✅ | ❌ | ✅ |
+| url-format/003/default | ✅ | ✅ | ✅ | ✅ | ✅ |
+| url-format/003/relative-url | ✅ | ✅ | ✅ | ✅ | ✅ |
+| url-fragments/001 | ✅ | ✅ | ✅ | ❌ | ✅ |
+| url-fragments/002 | ✅ | ✅ | ✅ | ❌ | ✅ |
 
 ## Types of failures
 
