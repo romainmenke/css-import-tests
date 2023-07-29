@@ -31,6 +31,7 @@ Current state :
 | at-layer/004 | ✅ | ✅ | ❌ | ✅ | ✅ |
 | at-layer/005 | ✅ | ✅ | ✅ | ✅ | ❌ |
 | at-layer/006 | ✅ | ✅ | ✅ | ✅ | ❌ |
+| at-layer/007 | ✅ | ✅ | ✅ | ❌ | ✅ |
 | at-media/001/absolute-url | ✅ | ✅ | ✅ | ❌ | ✅ |
 | at-media/001/default | ✅ | ✅ | ✅ | ✅ | ❌ |
 | at-media/002 | ✅ | ✅ | ✅ | ✅ | ❌ |
@@ -52,7 +53,7 @@ Current state :
 | cycles/005 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | cycles/006 | ✅ | ✅ | ❌ | ✅ | ✅ |
 | cycles/007 | ✅ | ✅ | ✅ | ✅ | ❌ |
-| cycles/008 | ✅ | ✅ | ❌ | ✅ | ❌ |
+| cycles/008 | ✅ | ✅ | ❌ | ❌ | ❌ |
 | data-urls/001 | ✅ | ✅ | ✅ | ❌ | ✅ |
 | data-urls/002 | ✅ | ✅ | ✅ | ❌ | ✅ |
 | data-urls/003 | ✅ | ✅ | ✅ | ❌ | ✅ |
