@@ -88,11 +88,12 @@ Current state :
 ## Types of failures
 
 As far as I can tell no one is actually using import conditions and actually checking that the resulting behavior is correct.
-If anyone had checked any basic case against a browser they would have been equally shocked as I was.
+If anyone had checked any basic case against a browser they would have files issues in upstream projects.
 
-There are two major issues :
+causes of interop issues :
 - bundlers want to optimize for file size
 - bundlers want to support importing CSS from npm packages
+- cascade layers were added CSS
 
 ## Contributing
 
