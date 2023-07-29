@@ -12,6 +12,7 @@ These tests are intended to surface such differences.
 
 Currently this checks :
 - Firefox (a.k.a. native)
+- `@csstools/postcss-bundle` (in progress)
 - `postcss-import`
 - `lightningcss`
 - `esbuild`
