@@ -93,7 +93,7 @@ If anyone had checked any basic case against a browser they would have files iss
 causes of interop issues :
 - bundlers want to optimize for file size
 - bundlers want to support importing CSS from npm packages
-- cascade layers were added CSS
+- cascade layers were added to CSS
 
 ## Contributing
 
