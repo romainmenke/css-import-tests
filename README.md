@@ -43,6 +43,9 @@ Current state :
 | at-media/006 | ✅ | ✅ | ✅ | ✅ | ❌ |
 | at-media/007 | ✅ | ✅ | ✅ | ✅ | ❌ |
 | at-media/008 | ✅ | ✅ | ✅ | ✅ | ❌ |
+| at-media/009 | ✅ | ✅ | ✅ | ❌ | ❌ |
+| at-media/010 | ✅ | ❌ | ❌ | ❌ | ❌ |
+| at-media/011 | ✅ | ❌ | ❌ | ❌ | ❌ |
 | at-supports/001 | ✅ | ✅ | ✅ | ✅ | ❌ |
 | at-supports/002 | ✅ | ✅ | ✅ | ✅ | ❌ |
 | at-supports/003 | ✅ | ✅ | ✅ | ✅ | ❌ |
@@ -55,7 +58,7 @@ Current state :
 | cycles/005 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | cycles/006 | ✅ | ✅ | ❌ | ✅ | ✅ |
 | cycles/007 | ✅ | ✅ | ✅ | ✅ | ❌ |
-| cycles/008 | ✅ | ✅ | ❌ | ✅ | ❌ |
+| cycles/008 | ✅ | ✅ | ❌ | ❌ | ❌ |
 | data-urls/001 | ✅ | ✅ | ✅ | ❌ | ✅ |
 | data-urls/002 | ✅ | ✅ | ✅ | ❌ | ✅ |
 | data-urls/003 | ✅ | ✅ | ✅ | ❌ | ✅ |
