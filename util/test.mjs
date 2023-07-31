@@ -184,7 +184,8 @@ export async function createTest(browser, testPath) {
 								entryPoints: [path.join(...testPath, 'style.css')],
 								bundle: true,
 								logLevel: 'silent',
-								write: false
+								write: false,
+								external: ['*.png']
 							})
 
 							res.end(esBundle.outputFiles[0].text);
