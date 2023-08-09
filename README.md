@@ -44,6 +44,8 @@ Sub string matches are fine,
 | 001-core-features/001/relative-url | ✅ | ✅ | ✅ | ✅ | ✅ |
 | 001-core-features/at-charset/001 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | 001-core-features/at-keyframes/001 | ✅ | ✅ | ✅ | ✅ | ✅ |
+| 001-core-features/before-other-styles/001 | ✅ | ✅ | ✅ | ❌ | ✅ |
+| 001-core-features/before-other-styles/002 | ✅ | ✅ | ✅ | ❌ | ✅ |
 | 001-core-features/cycles/001 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | 001-core-features/cycles/002 | ✅ | ✅ | ✅ | ❌ | ✅ |
 | 001-core-features/cycles/003 | ✅ | ✅ | ✅ | ❌ | ✅ |
@@ -107,10 +109,13 @@ Sub string matches are fine,
 | 002-sub-features/004-at-supports/003 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | 002-sub-features/004-at-supports/004 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | 002-sub-features/004-at-supports/005 | ✅ | ✅ | ✅ | ✅ | ✅ |
-| 003-should-fail/002-at-media/001 | ✅ | ❌ | ❌ | ❌ | ✅ |
-| 003-should-fail/002-at-media/002 | ✅ | ❌ | ❌ | ❌ | ✅ |
-| 003-should-fail/002-at-media/003 | ✅ | ❌ | ❌ | ❌ | ✅ |
-| 003-should-fail/002-at-media/004 | ✅ | ❌ | ❌ | ❌ | ✅ |
+| 003-should-fail/001-core-features/before-other-styles/001 | ✅ | ❌ | ❌ | ❌ | ✅ |
+| 003-should-fail/001-core-features/before-other-styles/002 | ✅ | ❌ | ❌ | ✅ | ✅ |
+| 003-should-fail/002-sub-features/002-at-media/001 | ✅ | ❌ | ❌ | ❌ | ✅ |
+| 003-should-fail/002-sub-features/002-at-media/002 | ✅ | ❌ | ❌ | ❌ | ✅ |
+| 003-should-fail/002-sub-features/002-at-media/003 | ✅ | ❌ | ❌ | ❌ | ✅ |
+| 003-should-fail/002-sub-features/002-at-media/004 | ✅ | ❌ | ❌ | ❌ | ✅ |
+| 004-unimplementable/001-namespace/001 | ✅ | ❌ | ❌ | ❌ | ❌ |
 | 999-irrelevant/url-format/001/absolute-url | ✅ | ✅ | ✅ | ❌ | ✅ |
 | 999-irrelevant/url-format/001/default | ✅ | ✅ | ✅ | ✅ | ✅ |
 | 999-irrelevant/url-format/001/relative-url | ✅ | ✅ | ✅ | ✅ | ✅ |
