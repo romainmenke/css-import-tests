@@ -17,7 +17,25 @@ Currently this checks :
 - `lightningcss`
 - `esbuild`
 
-Current state :
+## How to run
+
+### Full test suite
+
+⚠️ This is most likely broken.
+
+- `npm ci`
+- `npm run install:with-firefox`
+- `npm run test`
+
+### Individual test
+
+- `npm ci`
+- `npm run serve <name of a test>`
+
+Sub string matches are fine,  
+`npm run serve at-layer` will serve the first test that contains `at-layer`.
+
+## Current state
 
 | Test | native | @csstools/postcss-bundle | postcss-import | lightningcss | esbuild |
 | ---- | ------ | ------------------------ | -------------- | ------------ | ------- |
@@ -97,16 +115,6 @@ Current state :
 | 999-irrelevant/url-format/001/default | ✅ | ✅ | ✅ | ✅ | ✅ |
 | 999-irrelevant/url-format/001/relative-url | ✅ | ✅ | ✅ | ✅ | ✅ |
 | 999-irrelevant/url-format/002 | ✅ | ❌ | ❌ | ✅ | ❌ |
-
-## Types of failures
-
-As far as I can tell no one is actually using import conditions and actually checking that the resulting behavior is correct.
-If anyone had checked any basic case against a browser they would have files issues in upstream projects.
-
-causes of interop issues :
-- bundlers want to optimize for file size
-- bundlers want to support importing CSS from npm packages
-- cascade layers were added to CSS
 
 ## Contributing
 

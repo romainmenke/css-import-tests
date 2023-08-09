@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "test": "node ./test.mjs",
+    "serve": "node ./serve.mjs",
     "install:with-firefox": "PUPPETEER_PRODUCT=firefox npm rebuild puppeteer"
   },
   "repository": {

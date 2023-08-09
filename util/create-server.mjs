@@ -25,6 +25,26 @@ function hashLayerName(index, rootFilename) {
 		.slice(0, 12)}`;
 }
 
+function index() {
+	return `<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Index</title>
+</head>
+<body>
+	<ul>
+		<li><a href="./native.html">native</a></li>
+		<li><a href="./csstools-postcss-bundle.html">@csstools/postcss-bundle</a></li>
+		<li><a href="./postcss-import.html">postcss-import</a></li>
+		<li><a href="./lightningcss.html">lightningcss</a></li>
+		<li><a href="./esbuild.html">esbuild</a></li>
+	</ul>
+</body>
+</html>
+`
+}
 
 function html(bundle = 'native') {
 	return `<!DOCTYPE html>
@@ -61,7 +81,11 @@ export function createServer(testPath, imageWasRequestedCallback, serverErrorCal
 		const bundle = parsedUrl.searchParams.get('bundle');
 
 		switch (pathname) {
-			case '':
+			case '/':
+				res.setHeader('Content-type', 'text/html');
+				res.writeHead(200);
+				res.end(index('native'));
+				return;
 			case '/native.html':
 				res.setHeader('Content-type', 'text/html');
 				res.writeHead(200);
