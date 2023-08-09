@@ -83,7 +83,7 @@ Current state :
 | 002-sub-features/003-at-layer/009 | ✅ | ✅ | ✅ | ✅ | ❌ |
 | 002-sub-features/003-at-layer/at-keyframes/001 | ✅ | ✅ | ❌ | ✅ | ✅ |
 | 002-sub-features/003-at-layer/at-keyframes/002 | ✅ | ✅ | ✅ | ✅ | ❌ |
-| 002-sub-features/003-at-layer/cycles/001 | ✅ | ✅ | ❌ | ✅ | ✅ |
+| 002-sub-features/003-at-layer/cycles/001 | ✅ | ✅ | ❌ | ❌ | ✅ |
 | 002-sub-features/004-at-supports/001 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | 002-sub-features/004-at-supports/002 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | 002-sub-features/004-at-supports/003 | ✅ | ✅ | ✅ | ✅ | ✅ |
