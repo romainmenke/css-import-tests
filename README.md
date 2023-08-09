@@ -47,6 +47,10 @@ Current state :
 | at-media/009 | ✅ | ✅ | ✅ | ❌ | ✅ |
 | at-media/010 | ✅ | ❌ | ❌ | ❌ | ✅ |
 | at-media/011 | ✅ | ❌ | ❌ | ❌ | ✅ |
+| at-media/012 | ✅ | ❌ | ❌ | ❌ | ✅ |
+| at-media/013 | ✅ | ❌ | ❌ | ❌ | ✅ |
+| at-media/014 | ✅ | ✅ | ✅ | ❌ | ✅ |
+| at-media/015 | ✅ | ✅ | ✅ | ❌ | ❌ |
 | at-supports/001 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | at-supports/002 | ✅ | ✅ | ✅ | ✅ | ✅ |
 | at-supports/003 | ✅ | ✅ | ✅ | ✅ | ✅ |
