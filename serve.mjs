@@ -4,17 +4,21 @@ import path from "path";
 import './prepare-postcss-import-dev.mjs';
 import { createServer } from "./util/create-server.mjs";
 
-const onlyRunTest = process.argv.slice(2)[0];
+let onlyRunTest = process.argv.slice(2)[0];
 if (!onlyRunTest) {
 	console.log('Please specify a test to run.');
 	process.exit(1);
+}
+
+if (onlyRunTest.startsWith('tests/')) {
+	onlyRunTest = onlyRunTest.slice(6);
 }
 
 const testCase = (await fs.readdir('./tests', { withFileTypes: true, recursive: true })).filter(dirent => {
 	return dirent.isFile() && dirent.name === 'style.css'
 }).map(dirent => {
 	return path.relative('tests', dirent.path);
-}).find((x) => {
+}).sort().find((x) => {
 	return x.includes(onlyRunTest);
 });
 

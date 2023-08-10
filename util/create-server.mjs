@@ -203,9 +203,15 @@ export function createServer(testPath, imageWasRequestedCallback, serverErrorCal
 				if (pathname.endsWith('.png')) {
 					if (fsSync.existsSync(path.join(...testPath, pathname.slice(1)))) {
 						imageWasRequestedCallback();
+
+						const responseContent = await fs.readFile(path.join(...testPath, pathname.slice(1)));
+
 						res.setHeader('Content-type', 'image/png');
+						res.setHeader('Content-length', responseContent.length);
 						res.writeHead(200);
-						res.end(await fs.readFile(path.join(...testPath, pathname.slice(1)), 'utf8'));
+
+						
+						res.end(responseContent);
 						return;
 					}
 				}
