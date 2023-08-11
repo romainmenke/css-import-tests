@@ -3,7 +3,7 @@ import crypto from 'crypto';
 import fs from 'fs/promises';
 import fsSync from 'fs';
 import http from 'http';
-import path from 'path';
+import path, { parse } from 'path';
 import postcss from 'postcss';
 import postcssImport from 'postcss-import';
 import postcssImportDev from '../postcss-import/index.js';
@@ -79,6 +79,7 @@ export function createServer(testPath, imageWasRequestedCallback, serverErrorCal
 		const parsedUrl = new URL(req.url, 'http://localhost:8080');
 		const pathname = parsedUrl.pathname;
 		const bundle = parsedUrl.searchParams.get('bundle');
+		const backgroundColor = parsedUrl.searchParams.get('background-color');
 
 		switch (pathname) {
 			case '/':
@@ -192,6 +193,13 @@ export function createServer(testPath, imageWasRequestedCallback, serverErrorCal
 
 			default:
 				if (pathname.endsWith('.css')) {
+					if (backgroundColor) {
+						res.setHeader('Content-type', 'text/css');
+						res.writeHead(200);
+						res.end(`.box { background-color: ${backgroundColor}; }`);
+						return;
+					}
+
 					if (fsSync.existsSync(path.join(...testPath, pathname.slice(1)))) {
 						res.setHeader('Content-type', 'text/css');
 						res.writeHead(200);
