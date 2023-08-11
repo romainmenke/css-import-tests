@@ -72,7 +72,9 @@ Sub string matches are fine,
 | 001-core-features/url-format/002/default | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | 001-core-features/url-format/002/relative-url | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | 001-core-features/url-fragments/001 | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ |
-| 001-core-features/url-fragments/002 | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ |
+| 001-core-features/url-fragments/002 | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ |
+| 001-core-features/url-fragments/003 | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ |
+| 001-core-features/url-fragments/004 | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ |
 | 002-sub-features/001-data-urls/001 | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ |
 | 002-sub-features/001-data-urls/002 | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ |
 | 002-sub-features/001-data-urls/003 | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ |
@@ -102,9 +104,11 @@ Sub string matches are fine,
 | 002-sub-features/003-at-layer/007 | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ |
 | 002-sub-features/003-at-layer/008 | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ |
 | 002-sub-features/003-at-layer/009 | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ |
+| 002-sub-features/003-at-layer/010 | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ |
 | 002-sub-features/003-at-layer/at-keyframes/001 | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ |
 | 002-sub-features/003-at-layer/at-keyframes/002 | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ |
 | 002-sub-features/003-at-layer/cycles/001 | ✅ | ❌ | ✅ | ❌ | ❌ | ✅ |
+| 002-sub-features/003-at-layer/url-fragments/001 | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ |
 | 002-sub-features/004-at-supports/001 | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | 002-sub-features/004-at-supports/002 | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | 002-sub-features/004-at-supports/003 | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ |
@@ -117,6 +121,7 @@ Sub string matches are fine,
 | 003-should-fail/002-sub-features/002-at-media/003 | ✅ | ✅ | ❌ | ❌ | ❌ | ✅ |
 | 003-should-fail/002-sub-features/002-at-media/004 | ✅ | ✅ | ❌ | ❌ | ❌ | ✅ |
 | 004-unimplementable/001-namespace/001 | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
+| 004-unimplementable/002-url-queries/001 | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ |
 | 999-irrelevant/url-format/001/absolute-url | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ |
 | 999-irrelevant/url-format/001/default | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | 999-irrelevant/url-format/001/relative-url | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
