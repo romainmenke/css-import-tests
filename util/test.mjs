@@ -173,7 +173,7 @@ export async function createTest(browser, testPath) {
 	await server.closeAllConnections();
 	await server.close();
 
-	results.error = errors.length > 0 ? errors : null;
+	results.errors = errors.length > 0 ? errors : [];
 	results.success = !results.error && results.bundlers.every((x => x.success === true));
 	return results;
 }

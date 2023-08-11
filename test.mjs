@@ -30,34 +30,56 @@ testCases.sort();
 const results = [];
 
 for (const testCase of testCases) {
-	// https://bugzilla.mozilla.org/show_bug.cgi?id=1844683
-	// Ideally we test everything against one browser as we aren't trying to create a second WPT.
-	// Firefox supports `support()` conditions, Chrome better supports cyclic imports.
-	if (testCase.includes('001-core-features/cycles/006') || testCase.includes('002-at-media/cycles/001') || testCase.includes('003-at-layer/cycles/001')) {
-		results.push(
-			await createTestSafe(chrome, ['tests', ...testCase.split(path.sep)])
-		);
-	} else {
-		results.push(
-			await createTestSafe(firefox, ['tests', ...testCase.split(path.sep)])
-		);
+	const chromeResult = await createTestSafe(chrome, ['tests', ...testCase.split(path.sep)]);
+	const firefoxResult = await createTestSafe(firefox, ['tests', ...testCase.split(path.sep)]);
+
+	const chromeNativeResult = chromeResult.bundlers.find((x) => x.label === 'native');
+	const chromeRemainder = chromeResult.bundlers.filter((x) => x.label !== 'native');
+	chromeNativeResult.label = 'chrome';
+
+	const firefoxNativeResult = firefoxResult.bundlers.find((x) => x.label === 'native');
+	const firefoxRemainder = firefoxResult.bundlers.filter((x) => x.label !== 'native');
+	firefoxNativeResult.label = 'firefox';
+
+	const combinedResult = {
+		...chromeResult,
+		errors: [
+			...chromeResult.errors,
+		],
+		bundlers: [
+			chromeNativeResult,
+			firefoxNativeResult,
+			...chromeRemainder,
+		]
+	};
+
+	for (const result of chromeRemainder) {
+		const pairedResult = firefoxRemainder.find((x) => x.label === result.label);
+
+		if (result.success !== pairedResult.success) {
+			result.success = false;
+			combinedResult.errors.push(new Error(`When testing ${result.label} Firefox had success ${pairedResult.success} while Chrome had success ${result.success} for ${testCase}`));
+		}
 	}
+
+	results.push(combinedResult)
 }
 
 let failureCount = 0;
 let postcssImportFailureCount = 0;
 let nativeFailureCount = 0;
 
-console.log(`| Test | native | @csstools/postcss-bundle | postcss-import | lightningcss | esbuild |`);
-console.log(`| ---- | ------ | ------------------------ | -------------- | ------------ | ------- |`);
+console.log(`| Test | chrome | firefox | @csstools/postcss-bundle | postcss-import | lightningcss | esbuild |`);
+console.log(`| ---- | ------ | ------- | ------------------------ | -------------- | ------------ | ------- |`);
 for (const result of results) {
-	const nativeResult = result.bundlers.find((x => x.label === 'native')).success ? '✅' : '❌';
+	const chromeResult = result.bundlers.find((x => x.label === 'chrome')).success ? '✅' : '❌';
+	const firefoxResult = result.bundlers.find((x => x.label === 'firefox')).success ? '✅' : '❌';
 	const csstoolsPostcssBundleResult = result.bundlers.find((x => x.label === 'csstools-postcss-bundle')).success ? '✅' : '❌';
 	const postcssImportResult = result.bundlers.find((x => x.label === 'postcss-import')).success ? '✅' : '❌';
 	const lightningcssResult = result.bundlers.find((x => x.label === 'lightningcss')).success ? '✅' : '❌';
 	const esbuildResult = result.bundlers.find((x => x.label === 'esbuild')).success ? '✅' : '❌';
 
-	console.log(`| ${result.label} | ${nativeResult} | ${csstoolsPostcssBundleResult} | ${postcssImportResult} | ${lightningcssResult} | ${esbuildResult} |`);
+	console.log(`| ${result.label} | ${chromeResult} | ${firefoxResult} | ${csstoolsPostcssBundleResult} | ${postcssImportResult} | ${lightningcssResult} | ${esbuildResult} |`);
 }
 
 if (process.env.DEBUG) {
@@ -73,14 +95,16 @@ if (process.env.DEBUG) {
 				nativeFailureCount++;
 			}
 
-			console.error(`FAIL - ${result.label}`)
-			console.table(result.bundlers)
-			console.error(result.error);
+			console.error(`FAIL - ${result.label}`);
+			console.table(result.bundlers);
+			result.errors.forEach((x) => {
+				console.error(x);
+			});
 
 			continue;
 		}
 	
-		console.log(`OK   - ${result.label}`)
+		console.log(`OK   - ${result.label}`);
 	}
 }
 
@@ -88,5 +112,5 @@ if (process.env.DEBUG) {
 // 	throw new Error('force exit');
 // }, 1000);
 
-await firefox.close()
-await chrome.close()
+await firefox.close();
+await chrome.close();
