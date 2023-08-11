@@ -13,8 +13,8 @@ These tests are intended to surface such differences.
 Currently this checks :
 - `chrome`
 - `firefox`
-- `@csstools/postcss-bundle` (in progress tool)
-- `postcss-import`
+- `@csstools/postcss-bundle` (abbr. `p-bundle`)
+- `postcss-import` (abbr. `p-import`)
 - `lightningcss`
 - `esbuild`
 
@@ -38,8 +38,8 @@ Sub string matches are fine,
 
 ## Current state
 
-| Test | chrome | firefox | @csstools/postcss-bundle | postcss-import | lightningcss | esbuild |
-| ---- | ------ | ------- | ------------------------ | -------------- | ------------ | ------- |
+| Test | chrome | firefox | p-bundle | p-import | lightningcss | esbuild |
+| ---- | ------ | ------- | ------ | ------ | ------------ | ------- |
 | 001-core-features/001/absolute-url | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ |
 | 001-core-features/001/default | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | 001-core-features/001/relative-url | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
@@ -60,7 +60,7 @@ Sub string matches are fine,
 | 001-core-features/relative-paths/002 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | 001-core-features/subresource/001 | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ |
 | 001-core-features/subresource/002 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| 001-core-features/subresource/003 | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ |
+| 001-core-features/subresource/003 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | 001-core-features/subresource/004 | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ |
 | 001-core-features/subresource/005 | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ |
 | 001-core-features/subresource/006 | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |

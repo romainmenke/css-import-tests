@@ -69,8 +69,8 @@ let failureCount = 0;
 let postcssImportFailureCount = 0;
 let nativeFailureCount = 0;
 
-console.log(`| Test | chrome | firefox | @csstools/postcss-bundle | postcss-import | lightningcss | esbuild |`);
-console.log(`| ---- | ------ | ------- | ------------------------ | -------------- | ------------ | ------- |`);
+console.log(`| Test | chrome | firefox | p-bundle | p-import | lightningcss | esbuild |`);
+console.log(`| ---- | ------ | ------- | ------ | ------ | ------------ | ------- |`);
 for (const result of results) {
 	const chromeResult = result.bundlers.find((x => x.label === 'chrome')).success ? '✅' : '❌';
 	const firefoxResult = result.bundlers.find((x => x.label === 'firefox')).success ? '✅' : '❌';
