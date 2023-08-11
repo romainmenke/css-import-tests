@@ -79,6 +79,10 @@ for (const result of results) {
 	const lightningcssResult = result.bundlers.find((x => x.label === 'lightningcss')).success ? '✅' : '❌';
 	const esbuildResult = result.bundlers.find((x => x.label === 'esbuild')).success ? '✅' : '❌';
 
+	if (process.env.README) {
+		result.label = `[${result.label}](https://github.com/romainmenke/css-import-tests/tree/main/tests/${result.label})`;
+	}
+
 	console.log(`| ${result.label} | ${chromeResult} | ${firefoxResult} | ${csstoolsPostcssBundleResult} | ${postcssImportResult} | ${lightningcssResult} | ${esbuildResult} |`);
 }
 
