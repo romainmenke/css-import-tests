@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/romainmenke/css-import-tests#readme",
   "dependencies": {
-    "esbuild": "0.18.13",
+    "esbuild": "*",
     "lightningcss": "*",
     "postcss": "^8.4.26",
     "postcss-import": "*",
