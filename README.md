@@ -94,6 +94,9 @@ Sub string matches are fine,
 | [002-sub-features/002-at-media/009](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/002-at-media/009) | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ |
 | [002-sub-features/002-at-media/010](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/002-at-media/010) | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ |
 | [002-sub-features/002-at-media/011](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/002-at-media/011) | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ |
+| [002-sub-features/002-at-media/012](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/002-at-media/012) | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ |
+| [002-sub-features/002-at-media/013](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/002-at-media/013) | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ |
+| [002-sub-features/002-at-media/014](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/002-at-media/014) | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ |
 | [002-sub-features/002-at-media/at-keyframes/001](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/002-at-media/at-keyframes/001) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [002-sub-features/002-at-media/cycles/001](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/002-at-media/cycles/001) | ✅ | ❌ | ✅ | ❌ | ✅ | ✅ |
 | [002-sub-features/003-at-layer/001](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/003-at-layer/001) | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ |
@@ -119,10 +122,10 @@ Sub string matches are fine,
 | [002-sub-features/004-at-supports/005](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/004-at-supports/005) | ❌ | ✅ | ✅ | ❌ | ✅ | ✅ |
 | [003-should-fail/001-core-features/before-other-styles/001](https://github.com/romainmenke/css-import-tests/tree/main/tests/003-should-fail/001-core-features/before-other-styles/001) | ✅ | ✅ | ❌ | ❌ | ❌ | ✅ |
 | [003-should-fail/001-core-features/before-other-styles/002](https://github.com/romainmenke/css-import-tests/tree/main/tests/003-should-fail/001-core-features/before-other-styles/002) | ✅ | ✅ | ❌ | ❌ | ✅ | ✅ |
-| [003-should-fail/002-sub-features/002-at-media/001](https://github.com/romainmenke/css-import-tests/tree/main/tests/003-should-fail/002-sub-features/002-at-media/001) | ✅ | ✅ | ❌ | ❌ | ❌ | ✅ |
-| [003-should-fail/002-sub-features/002-at-media/002](https://github.com/romainmenke/css-import-tests/tree/main/tests/003-should-fail/002-sub-features/002-at-media/002) | ✅ | ✅ | ❌ | ❌ | ❌ | ✅ |
-| [003-should-fail/002-sub-features/002-at-media/003](https://github.com/romainmenke/css-import-tests/tree/main/tests/003-should-fail/002-sub-features/002-at-media/003) | ✅ | ✅ | ❌ | ❌ | ❌ | ✅ |
-| [003-should-fail/002-sub-features/002-at-media/004](https://github.com/romainmenke/css-import-tests/tree/main/tests/003-should-fail/002-sub-features/002-at-media/004) | ✅ | ✅ | ❌ | ❌ | ❌ | ✅ |
+| [003-should-fail/002-sub-features/002-at-media/001](https://github.com/romainmenke/css-import-tests/tree/main/tests/003-should-fail/002-sub-features/002-at-media/001) | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ |
+| [003-should-fail/002-sub-features/002-at-media/002](https://github.com/romainmenke/css-import-tests/tree/main/tests/003-should-fail/002-sub-features/002-at-media/002) | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ |
+| [003-should-fail/002-sub-features/002-at-media/003](https://github.com/romainmenke/css-import-tests/tree/main/tests/003-should-fail/002-sub-features/002-at-media/003) | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ |
+| [003-should-fail/002-sub-features/002-at-media/004](https://github.com/romainmenke/css-import-tests/tree/main/tests/003-should-fail/002-sub-features/002-at-media/004) | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ |
 | [004-unimplementable/001-namespace/001](https://github.com/romainmenke/css-import-tests/tree/main/tests/004-unimplementable/001-namespace/001) | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
 | [004-unimplementable/002-url-queries/001](https://github.com/romainmenke/css-import-tests/tree/main/tests/004-unimplementable/002-url-queries/001) | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ |
 | [999-irrelevant/url-format/001/absolute-url](https://github.com/romainmenke/css-import-tests/tree/main/tests/999-irrelevant/url-format/001/absolute-url) | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ |
