@@ -1,29 +1,13 @@
 import * as esbuild from 'esbuild'
-import crypto from 'crypto';
 import fs from 'fs/promises';
 import fsSync from 'fs';
 import http from 'http';
-import path, { parse } from 'path';
+import path from 'path';
 import postcss from 'postcss';
 import postcssImport from 'postcss-import';
 import postcssImportDev from '../postcss-import/index.js';
 import postcssRebaseURL from '../postcss-rebase-url/index.mjs'
 import { bundle as lightningcss } from 'lightningcss';
-
-function hashLayerName(index, rootFilename) {
-	if (!rootFilename) {
-		return `import-anon-layer-${index}`;
-	}
-
-	// A stable, deterministic and unique layer name:
-	// - layer index
-	// - relative rootFilename to current working directory
-	return `import-anon-layer-${crypto
-		.createHash('sha256')
-		.update(`${index}-${rootFilename}`)
-		.digest('hex')
-		.slice(0, 12)}`;
-}
 
 function index() {
 	return `<!DOCTYPE html>
@@ -125,7 +109,6 @@ export function createServer(testPath, imageWasRequestedCallback, serverErrorCal
 						await postcss([
 							postcssImportDev({
 								skipDuplicates: false,
-								nameLayer: hashLayerName,
 							}),
 							postcssRebaseURL(),
 						]).process(await fs.readFile(path.join(...testPath, 'style.css'), 'utf8'), {
