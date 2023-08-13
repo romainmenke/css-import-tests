@@ -1,1 +1,1 @@
-Chained import with http import last and different but compatible type with negation
+Chained import without http import last and different conditions with negation

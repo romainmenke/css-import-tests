@@ -1,1 +1,1 @@
-Chained import with http import last and different but compatible type with negation
+Chained imports 2 levels deep with http import last and different conditions with negation
