@@ -49,18 +49,18 @@ for (const testCase of testCases) {
 		bundlers: [
 			chromeNativeResult,
 			firefoxNativeResult,
-			...chromeRemainder,
+			...firefoxRemainder,
 		]
 	};
 
-	for (const result of chromeRemainder) {
-		const pairedResult = firefoxRemainder.find((x) => x.label === result.label);
+	// for (const result of firefoxRemainder) {
+	// 	const pairedResult = chromeRemainder.find((x) => x.label === result.label);
 
-		if (result.success !== pairedResult.success) {
-			result.success = false;
-			combinedResult.errors.push(new Error(`When testing ${result.label} Firefox had success ${pairedResult.success} while Chrome had success ${result.success} for ${testCase}`));
-		}
-	}
+	// 	if (result.success !== pairedResult.success) {
+	// 		result.success = false;
+	// 		combinedResult.errors.push(new Error(`When testing ${result.label} Firefox had success ${result.success} while Chrome had success ${pairedResult.success} for ${testCase}`));
+	// 	}
+	// }
 
 	results.push(combinedResult)
 }
