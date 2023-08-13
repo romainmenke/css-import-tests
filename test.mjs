@@ -112,9 +112,9 @@ if (process.env.DEBUG) {
 	}
 }
 
-// setTimeout(() => {
-// 	throw new Error('force exit');
-// }, 1000);
+setTimeout(() => {
+	throw new Error('force exit');
+}, 1000);
 
 await firefox.close();
 await chrome.close();

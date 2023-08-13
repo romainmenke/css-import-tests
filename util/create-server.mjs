@@ -141,7 +141,7 @@ export function createServer(testPath, imageWasRequestedCallback, serverErrorCal
 						return;
 					case 'postcss-import':
 						await postcss([
-							postcssImportDev(),
+							postcssImport(),
 						]).process(await fs.readFile(path.join(...testPath, 'style.css'), 'utf8'), {
 							from: path.join(...testPath, 'style.css'),
 							to: path.join(...testPath, 'style.css'),
