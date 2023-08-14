@@ -111,12 +111,12 @@ Sub string matches are fine,
 | [002-sub-features/003-at-layer/006](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/003-at-layer/006) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [002-sub-features/003-at-layer/007](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/003-at-layer/007) | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ |
 | [002-sub-features/003-at-layer/008](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/003-at-layer/008) | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ |
-| [002-sub-features/003-at-layer/009](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/003-at-layer/009) | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ |
+| [002-sub-features/003-at-layer/009](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/003-at-layer/009) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [002-sub-features/003-at-layer/010](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/003-at-layer/010) | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ |
 | [002-sub-features/003-at-layer/011](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/003-at-layer/011) | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ |
 | [002-sub-features/003-at-layer/012](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/003-at-layer/012) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [002-sub-features/003-at-layer/at-keyframes/001](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/003-at-layer/at-keyframes/001) | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ |
-| [002-sub-features/003-at-layer/at-keyframes/002](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/003-at-layer/at-keyframes/002) | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ |
+| [002-sub-features/003-at-layer/at-keyframes/002](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/003-at-layer/at-keyframes/002) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [002-sub-features/003-at-layer/cycles/001](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/003-at-layer/cycles/001) | ✅ | ❌ | ✅ | ❌ | ❌ | ✅ |
 | [002-sub-features/003-at-layer/url-fragments/001](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/003-at-layer/url-fragments/001) | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ |
 | [002-sub-features/004-at-supports/001](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/004-at-supports/001) | ❌ | ✅ | ✅ | ❌ | ✅ | ✅ |
