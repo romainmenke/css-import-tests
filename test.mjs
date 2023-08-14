@@ -2,8 +2,6 @@ import fs from "fs/promises";
 import path from "path";
 import puppeteer from "puppeteer";
 
-import './prepare-postcss-import-dev.mjs';
-
 const { createTestSafe } = await import('./util/test.mjs')
 
 const onlyRunTest = process.argv.slice(2)[0];

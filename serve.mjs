@@ -1,7 +1,6 @@
 import fs from "fs/promises";
 import path from "path";
 
-import './prepare-postcss-import-dev.mjs';
 import { createServer } from "./util/create-server.mjs";
 
 let onlyRunTest = process.argv.slice(2)[0];

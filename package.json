@@ -19,14 +19,11 @@
   },
   "homepage": "https://github.com/romainmenke/css-import-tests#readme",
   "dependencies": {
+    "@csstools/postcss-bundler": "*",
     "esbuild": "*",
     "lightningcss": "*",
     "postcss": "^8.4.26",
     "postcss-import": "*",
     "puppeteer": "^20.8.2"
-  },
-  "devDependencies": {
-    "@csstools/css-tokenizer": "^2.2.0",
-    "@csstools/css-parser-algorithms": "^2.3.1"
   }
 }

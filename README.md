@@ -131,6 +131,8 @@ Sub string matches are fine,
 | [004-unimplementable/002-url-queries/001](https://github.com/romainmenke/css-import-tests/tree/main/tests/004-unimplementable/002-url-queries/001) | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ |
 | [004-unimplementable/003-mixed-importables/001](https://github.com/romainmenke/css-import-tests/tree/main/tests/004-unimplementable/003-mixed-importables/001) | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
 | [004-unimplementable/003-mixed-importables/002](https://github.com/romainmenke/css-import-tests/tree/main/tests/004-unimplementable/003-mixed-importables/002) | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
+| [005-implementation-specific/leading-slash-is-import-root/001](https://github.com/romainmenke/css-import-tests/tree/main/tests/005-implementation-specific/leading-slash-is-import-root/001) | ✅ | ✅ | ❌ | ✅ | ❌ | ❌ |
+| [005-implementation-specific/leading-slash-is-import-root/002](https://github.com/romainmenke/css-import-tests/tree/main/tests/005-implementation-specific/leading-slash-is-import-root/002) | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
 | [999-irrelevant/url-format/001/absolute-url](https://github.com/romainmenke/css-import-tests/tree/main/tests/999-irrelevant/url-format/001/absolute-url) | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ |
 | [999-irrelevant/url-format/001/default](https://github.com/romainmenke/css-import-tests/tree/main/tests/999-irrelevant/url-format/001/default) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [999-irrelevant/url-format/001/relative-url](https://github.com/romainmenke/css-import-tests/tree/main/tests/999-irrelevant/url-format/001/relative-url) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |

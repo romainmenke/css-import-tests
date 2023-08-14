@@ -5,8 +5,7 @@ import http from 'http';
 import path from 'path';
 import postcss from 'postcss';
 import postcssImport from 'postcss-import';
-import postcssImportDev from '../postcss-import/index.js';
-import postcssRebaseURL from '../postcss-rebase-url/index.mjs'
+import postcssBundler from '@csstools/postcss-bundler';
 import { bundle as lightningcss } from 'lightningcss';
 
 function index() {
@@ -107,10 +106,7 @@ export function createServer(testPath, imageWasRequestedCallback, serverErrorCal
 
 					case 'csstools-postcss-bundle':
 						await postcss([
-							postcssImportDev({
-								skipDuplicates: false,
-							}),
-							postcssRebaseURL(),
+							postcssBundler(),
 						]).process(await fs.readFile(path.join(...testPath, 'style.css'), 'utf8'), {
 							from: path.join(...testPath, 'style.css'),
 							to: path.join(...testPath, 'style.css'),
