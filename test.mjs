@@ -67,12 +67,12 @@ let failureCount = 0;
 let postcssImportFailureCount = 0;
 let nativeFailureCount = 0;
 
-console.log(`| Test | chrome | firefox | p-bundler | p-import | lightningcss | esbuild |`);
-console.log(`| ---- | ------ | ------- | --------- | -------- | ------------ | ------- |`);
+console.log(`| Test | chrome | firefox | esbuild | lightningcss | p-bundler | p-import |`);
+console.log(`| ---- | ------ | ------- | ------- | ------------ | --------- | -------- |`);
 for (const result of results) {
 	const chromeResult = result.bundlers.find((x => x.label === 'chrome')).success ? '✅' : '❌';
 	const firefoxResult = result.bundlers.find((x => x.label === 'firefox')).success ? '✅' : '❌';
-	const csstoolsPostcssBundleResult = result.bundlers.find((x => x.label === 'csstools-postcss-bundle')).success ? '✅' : '❌';
+	const csstoolsPostcssBundlerResult = result.bundlers.find((x => x.label === 'csstools-postcss-bundler')).success ? '✅' : '❌';
 	const postcssImportResult = result.bundlers.find((x => x.label === 'postcss-import')).success ? '✅' : '❌';
 	const lightningcssResult = result.bundlers.find((x => x.label === 'lightningcss')).success ? '✅' : '❌';
 	const esbuildResult = result.bundlers.find((x => x.label === 'esbuild')).success ? '✅' : '❌';
@@ -81,7 +81,7 @@ for (const result of results) {
 		result.label = `[${result.label}](https://github.com/romainmenke/css-import-tests/tree/main/tests/${result.label})`;
 	}
 
-	console.log(`| ${result.label} | ${chromeResult} | ${firefoxResult} | ${csstoolsPostcssBundleResult} | ${postcssImportResult} | ${lightningcssResult} | ${esbuildResult} |`);
+	console.log(`| ${result.label} | ${chromeResult} | ${firefoxResult} | ${esbuildResult} | ${lightningcssResult} | ${csstoolsPostcssBundlerResult} | ${postcssImportResult} |`);
 }
 
 if (process.env.DEBUG) {

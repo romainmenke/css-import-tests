@@ -86,7 +86,7 @@ export async function createTest(browser, testPath) {
 
 	{
 		resetState();
-		await page.goto(`http://localhost:8080/csstools-postcss-bundle.html`);
+		await page.goto(`http://localhost:8080/csstools-postcss-bundler.html`);
 		const result = await page.evaluate(async () => {
 			const box = document.getElementById('box');
 			const style = window.getComputedStyle(box);
@@ -94,7 +94,7 @@ export async function createTest(browser, testPath) {
 		});
 
 		results.bundlers.push({
-			label: 'csstools-postcss-bundle',
+			label: 'csstools-postcss-bundler',
 			success: (!serverError && !pageError && !requestHandlerError) && (
 				result[0] === 'rgb(0, 128, 0)' ||
 				(

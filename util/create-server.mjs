@@ -19,10 +19,10 @@ function index() {
 <body>
 	<ul>
 		<li><a href="./native.html">native</a></li>
-		<li><a href="./csstools-postcss-bundle.html">@csstools/postcss-bundle</a></li>
-		<li><a href="./postcss-import.html">postcss-import</a></li>
-		<li><a href="./lightningcss.html">lightningcss</a></li>
 		<li><a href="./esbuild.html">esbuild</a></li>
+		<li><a href="./lightningcss.html">lightningcss</a></li>
+		<li><a href="./csstools-postcss-bundler.html">@csstools/postcss-bundler</a></li>
+		<li><a href="./postcss-import.html">postcss-import</a></li>
 	</ul>
 </body>
 </html>
@@ -75,10 +75,10 @@ export function createServer(testPath, imageWasRequestedCallback, serverErrorCal
 				res.writeHead(200);
 				res.end(html('native'));
 				return;
-			case '/csstools-postcss-bundle.html':
+			case '/csstools-postcss-bundler.html':
 				res.setHeader('Content-type', 'text/html');
 				res.writeHead(200);
-				res.end(html('csstools-postcss-bundle'));
+				res.end(html('csstools-postcss-bundler'));
 				return;
 			case '/postcss-import.html':
 				res.setHeader('Content-type', 'text/html');
@@ -104,7 +104,7 @@ export function createServer(testPath, imageWasRequestedCallback, serverErrorCal
 						res.end(await fs.readFile(path.join(...testPath, 'style.css'), 'utf8'));
 						return;
 
-					case 'csstools-postcss-bundle':
+					case 'csstools-postcss-bundler':
 						await postcss([
 							postcssBundler(),
 						]).process(await fs.readFile(path.join(...testPath, 'style.css'), 'utf8'), {
