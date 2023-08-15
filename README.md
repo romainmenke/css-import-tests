@@ -22,8 +22,6 @@ Currently this checks :
 
 ### Full test suite
 
-⚠️ This is most likely broken.
-
 - `npm ci`
 - `npm run install:with-firefox`
 - `npm run test`
