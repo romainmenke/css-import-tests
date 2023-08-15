@@ -13,7 +13,7 @@ These tests are intended to surface such differences.
 Currently this checks :
 - `chrome`
 - `firefox`
-- `@csstools/postcss-bundle` (abbr. `p-bundle`)
+- `@csstools/postcss-bundler` (abbr. `p-bundler`)
 - `postcss-import` (abbr. `p-import`)
 - `lightningcss`
 - `esbuild`
@@ -36,8 +36,8 @@ Sub string matches are fine,
 
 ## Current state
 
-| Test | chrome | firefox | p-bundle | p-import | lightningcss | esbuild |
-| ---- | ------ | ------- | ------ | ------ | ------------ | ------- |
+| Test | chrome | firefox | p-bundler | p-import | lightningcss | esbuild |
+| ---- | ------ | ------- | --------- | -------- | ------------ | ------- |
 | [001-core-features/001/absolute-url](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/001/absolute-url) | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ |
 | [001-core-features/001/default](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/001/default) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [001-core-features/001/relative-url](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/001/relative-url) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
