@@ -132,6 +132,7 @@ Sub string matches are fine,
 | [002-sub-features/004-at-supports/005](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/004-at-supports/005) | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ |
 | [002-sub-features/004-at-supports/006](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/004-at-supports/006) | ❌ | ✅ | ✅ | ❌ | ✅ | ✅ |
 | [002-sub-features/004-at-supports/007](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/004-at-supports/007) | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ |
+| [002-sub-features/004-at-supports/008](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/004-at-supports/008) | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ |
 | [002-sub-features/004-at-supports/case-sensitivity/001](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/004-at-supports/case-sensitivity/001) | ❌ | ✅ | ❌ | ✅ | ✅ | ❌ |
 | [003-should-fail/001-core-features/before-other-styles/001](https://github.com/romainmenke/css-import-tests/tree/main/tests/003-should-fail/001-core-features/before-other-styles/001) | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ |
 | [003-should-fail/001-core-features/before-other-styles/002](https://github.com/romainmenke/css-import-tests/tree/main/tests/003-should-fail/001-core-features/before-other-styles/002) | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ |
