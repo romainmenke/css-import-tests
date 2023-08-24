@@ -81,6 +81,7 @@ Sub string matches are fine,
 | [001-core-features/url-fragments/002](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/url-fragments/002) | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ |
 | [001-core-features/url-fragments/003](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/url-fragments/003) | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ |
 | [001-core-features/url-fragments/004](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/url-fragments/004) | ✅ | ✅ | ❌ | ❌ | ✅ | ❌ |
+| [001-core-features/url-fragments/005](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/url-fragments/005) | ✅ | ✅ | ❌ | ❌ | ✅ | ❌ |
 | [002-sub-features/001-data-urls/001](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/001-data-urls/001) | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ |
 | [002-sub-features/001-data-urls/002](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/001-data-urls/002) | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ |
 | [002-sub-features/001-data-urls/003](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/001-data-urls/003) | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ |
