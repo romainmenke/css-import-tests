@@ -179,7 +179,7 @@ export function createServer(testPath, imageWasRequestedCallback, serverErrorCal
 						return;
 					}
 
-					if (fsSync.existsSync(path.join(...testPath, pathname.slice(1)))) {
+					if (fileExistsWithCaseSync(path.join(...testPath, pathname.slice(1)))) {
 						res.setHeader('Content-type', 'text/css');
 						res.writeHead(200);
 						res.end(await fs.readFile(path.join(...testPath, pathname.slice(1)), 'utf8'));
@@ -188,7 +188,7 @@ export function createServer(testPath, imageWasRequestedCallback, serverErrorCal
 				}
 
 				if (pathname.endsWith('.png')) {
-					if (fsSync.existsSync(path.join(...testPath, pathname.slice(1)))) {
+					if (fileExistsWithCaseSync(path.join(...testPath, pathname.slice(1)))) {
 						imageWasRequestedCallback();
 
 						const responseContent = await fs.readFile(path.join(...testPath, pathname.slice(1)));
@@ -217,4 +217,13 @@ export function createServer(testPath, imageWasRequestedCallback, serverErrorCal
 	});
 
 	return server;
+}
+
+function fileExistsWithCaseSync(filepath) {
+	const filename = path.basename(filepath);
+	try {
+		return fsSync.readdirSync(path.dirname(filepath)).some((x) => x === filename);
+	} catch (_) {
+		return false;
+	}
 }

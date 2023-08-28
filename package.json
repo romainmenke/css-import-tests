@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/romainmenke/css-import-tests#readme",
   "dependencies": {
-    "@csstools/postcss-bundler": "0.1.0-alpha.6",
+    "@csstools/postcss-bundler": "*",
     "esbuild": "*",
     "lightningcss": "*",
     "postcss": "^8.4.26",
