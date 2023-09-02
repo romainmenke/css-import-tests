@@ -72,6 +72,9 @@ Sub string matches are fine,
 | [001-core-features/subresource/005](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/subresource/005) | ✅ | ✅ | ❌ | ❌ | ✅ | ❌ |
 | [001-core-features/subresource/006](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/subresource/006) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [001-core-features/subresource/007](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/subresource/007) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| [001-core-features/subresource/008](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/subresource/008) | ✅ | ❌ | ❌ | ❌ | ✅ | ❌ |
+| [001-core-features/subresource/009](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/subresource/009) | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
+| [001-core-features/subresource/010](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/subresource/010) | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
 | [001-core-features/url-format/001/absolute-url](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/url-format/001/absolute-url) | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ |
 | [001-core-features/url-format/001/default](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/url-format/001/default) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [001-core-features/url-format/001/relative-url](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/url-format/001/relative-url) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
@@ -149,7 +152,7 @@ Sub string matches are fine,
 | [999-irrelevant/url-format/001/relative-url](https://github.com/romainmenke/css-import-tests/tree/main/tests/999-irrelevant/url-format/001/relative-url) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [999-irrelevant/url-format/002](https://github.com/romainmenke/css-import-tests/tree/main/tests/999-irrelevant/url-format/002) | ✅ | ✅ | ❌ | ✅ | ❌ | ❌ |
 | [999-irrelevant/url-fragments/001](https://github.com/romainmenke/css-import-tests/tree/main/tests/999-irrelevant/url-fragments/001) | ✅ | ✅ | ❌ | ❌ | ✅ | ❌ |
-| Total | 91 / 98 | 95 / 98 | 87 / 98 | 53 / 98 | 95 / 98 | 51 / 98 |
+| Total | 94 / 101 | 97 / 101 | 87 / 101 | 54 / 101 | 96 / 101 | 51 / 101 |
 
 ## Contributing
 
