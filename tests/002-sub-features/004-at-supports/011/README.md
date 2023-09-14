@@ -1,0 +1,1 @@
+Supports `supports(selector(&))`
