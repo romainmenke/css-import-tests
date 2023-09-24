@@ -24,6 +24,6 @@
     "lightningcss": "*",
     "postcss": "^8.4.26",
     "postcss-import": "*",
-    "puppeteer": "^20.8.2"
+    "puppeteer": "^21.0.0"
   }
 }
