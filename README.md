@@ -126,12 +126,13 @@ Sub string matches are fine,
 | [002-sub-features/003-at-layer/010](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/003-at-layer/010) | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ |
 | [002-sub-features/003-at-layer/011](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/003-at-layer/011) | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ |
 | [002-sub-features/003-at-layer/012](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/003-at-layer/012) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| [002-sub-features/003-at-layer/013](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/003-at-layer/013) | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ |
 | [002-sub-features/003-at-layer/at-keyframes/001](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/003-at-layer/at-keyframes/001) | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ |
 | [002-sub-features/003-at-layer/at-keyframes/002](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/003-at-layer/at-keyframes/002) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [002-sub-features/003-at-layer/case-sensitivity/001](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/003-at-layer/case-sensitivity/001) | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ |
 | [002-sub-features/003-at-layer/case-sensitivity/002](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/003-at-layer/case-sensitivity/002) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [002-sub-features/003-at-layer/case-sensitivity/003](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/003-at-layer/case-sensitivity/003) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| [002-sub-features/003-at-layer/cycles/001](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/003-at-layer/cycles/001) | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ |
+| [002-sub-features/003-at-layer/cycles/001](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/003-at-layer/cycles/001) | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ |
 | [002-sub-features/003-at-layer/url-fragments/001](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/003-at-layer/url-fragments/001) | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ |
 | [002-sub-features/004-at-supports/001](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/004-at-supports/001) | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ |
 | [002-sub-features/004-at-supports/002](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/004-at-supports/002) | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ |
@@ -144,6 +145,7 @@ Sub string matches are fine,
 | [002-sub-features/004-at-supports/009](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/004-at-supports/009) | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ |
 | [002-sub-features/004-at-supports/010](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/004-at-supports/010) | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ |
 | [002-sub-features/004-at-supports/011](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/004-at-supports/011) | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ |
+| [002-sub-features/004-at-supports/012](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/004-at-supports/012) | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ |
 | [002-sub-features/004-at-supports/case-sensitivity/001](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/004-at-supports/case-sensitivity/001) | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ |
 | [003-should-fail/001-core-features/before-other-styles/001](https://github.com/romainmenke/css-import-tests/tree/main/tests/003-should-fail/001-core-features/before-other-styles/001) | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ |
 | [003-should-fail/001-core-features/before-other-styles/002](https://github.com/romainmenke/css-import-tests/tree/main/tests/003-should-fail/001-core-features/before-other-styles/002) | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ |
@@ -159,7 +161,7 @@ Sub string matches are fine,
 | [999-irrelevant/url-format/001/relative-url](https://github.com/romainmenke/css-import-tests/tree/main/tests/999-irrelevant/url-format/001/relative-url) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [999-irrelevant/url-format/002](https://github.com/romainmenke/css-import-tests/tree/main/tests/999-irrelevant/url-format/002) | ✅ | ✅ | ❌ | ✅ | ❌ | ❌ |
 | [999-irrelevant/url-fragments/001](https://github.com/romainmenke/css-import-tests/tree/main/tests/999-irrelevant/url-fragments/001) | ✅ | ✅ | ❌ | ❌ | ✅ | ❌ |
-| Total | 97 / 107 | 103 / 107 | 97 / 107 | 60 / 107 | 103 / 107 | 53 / 107 |
+| Total | 99 / 109 | 105 / 109 | 99 / 109 | 59 / 109 | 105 / 109 | 55 / 109 |
 
 ## Contributing
 

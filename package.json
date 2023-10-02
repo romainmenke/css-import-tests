@@ -22,7 +22,7 @@
     "@csstools/postcss-bundler": "*",
     "esbuild": "*",
     "lightningcss": "*",
-    "postcss": "^8.4.26",
+    "postcss": "^8.4.31",
     "postcss-import": "*",
     "puppeteer": "^21.0.0"
   }
