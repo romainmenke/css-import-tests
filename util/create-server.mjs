@@ -136,6 +136,7 @@ export function createServer(testPath, imageWasRequestedCallback, serverErrorCal
 						try {
 							let { code } = lightningcss({
 								filename: path.join(...testPath, 'style.css'),
+								errorRecovery: true,
 								minify: false
 							});
 
