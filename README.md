@@ -64,6 +64,7 @@ Sub string matches are fine,
 | [001-core-features/forwards-compat/001](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/forwards-compat/001) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [001-core-features/forwards-compat/002](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/forwards-compat/002) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [001-core-features/forwards-compat/003](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/forwards-compat/003) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| [001-core-features/forwards-compat/004](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/forwards-compat/004) | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ |
 | [001-core-features/namespace/001](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/namespace/001) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [001-core-features/namespace/002](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/namespace/002) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [001-core-features/relative-paths/001](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/relative-paths/001) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
@@ -164,7 +165,7 @@ Sub string matches are fine,
 | [999-irrelevant/url-format/001/relative-url](https://github.com/romainmenke/css-import-tests/tree/main/tests/999-irrelevant/url-format/001/relative-url) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [999-irrelevant/url-format/002](https://github.com/romainmenke/css-import-tests/tree/main/tests/999-irrelevant/url-format/002) | ✅ | ✅ | ❌ | ✅ | ❌ | ❌ |
 | [999-irrelevant/url-fragments/001](https://github.com/romainmenke/css-import-tests/tree/main/tests/999-irrelevant/url-fragments/001) | ✅ | ✅ | ❌ | ❌ | ✅ | ❌ |
-| Total | 102 / 112 | 108 / 112 | 102 / 112 | 70 / 112 | 108 / 112 | 58 / 112 |
+| Total | 103 / 113 | 109 / 113 | 103 / 113 | 71 / 113 | 109 / 113 | 58 / 113 |
 
 ## Contributing
 

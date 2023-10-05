@@ -4,9 +4,13 @@ import fsSync from 'fs';
 import http from 'http';
 import path from 'path';
 import postcss from 'postcss';
-import postcssImport from 'postcss-import';
 import postcssBundler from '@csstools/postcss-bundler';
 import { bundle as lightningcss } from 'lightningcss';
+import module from 'module';
+
+const require = module.createRequire(import.meta.url);
+// const postcssImport = require('../../postcss-import');
+const postcssImport = require('postcss-import');
 
 function index() {
 	return `<!DOCTYPE html>
@@ -120,7 +124,9 @@ export function createServer(testPath, imageWasRequestedCallback, serverErrorCal
 						return;
 					case 'postcss-import':
 						await postcss([
-							postcssImport(),
+							postcssImport({
+								// skipDuplicates: false
+							}),
 						]).process(await fs.readFile(path.join(...testPath, 'style.css'), 'utf8'), {
 							from: path.join(...testPath, 'style.css'),
 							to: path.join(...testPath, 'style.css'),
