@@ -1,1 +1,1 @@
-Chained import with http import last and different conditions but compatible type with negation
+Conditional layer statements in imports are correctly preserved.
