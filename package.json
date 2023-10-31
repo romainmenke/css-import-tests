@@ -25,5 +25,9 @@
     "postcss": "^8.4.31",
     "postcss-import": "*",
     "puppeteer": "^21.0.0"
+  },
+  "volta": {
+    "node": "21.1.0",
+    "npm": "10.2.2"
   }
 }
