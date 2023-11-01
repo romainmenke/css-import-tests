@@ -11,6 +11,7 @@ import module from 'module';
 const require = module.createRequire(import.meta.url);
 // const postcssImport = require('../../postcss-import');
 const postcssImport = require('postcss-import');
+const strictParse = require('./postcss/strict-parse.cjs');
 
 function index() {
 	return `<!DOCTYPE html>
@@ -112,6 +113,7 @@ export function createServer(testPath, imageWasRequestedCallback, serverErrorCal
 						await postcss([
 							postcssBundler(),
 						]).process(await fs.readFile(path.join(...testPath, 'style.css'), 'utf8'), {
+							parser: strictParse,
 							from: path.join(...testPath, 'style.css'),
 							to: path.join(...testPath, 'style.css'),
 						}).then((result) => {
@@ -128,6 +130,7 @@ export function createServer(testPath, imageWasRequestedCallback, serverErrorCal
 								// skipDuplicates: false
 							}),
 						]).process(await fs.readFile(path.join(...testPath, 'style.css'), 'utf8'), {
+							parser: strictParse,
 							from: path.join(...testPath, 'style.css'),
 							to: path.join(...testPath, 'style.css'),
 						}).then((result) => {
