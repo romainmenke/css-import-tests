@@ -24,7 +24,6 @@
     "lightningcss": "*",
     "postcss": "^8.4.31",
     "postcss-import": "*",
-    "postcss-parser-tests": "^8.8.0",
     "puppeteer": "^21.0.0"
   },
   "volta": {

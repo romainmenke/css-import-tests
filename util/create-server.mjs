@@ -127,7 +127,7 @@ export function createServer(testPath, imageWasRequestedCallback, serverErrorCal
 					case 'postcss-import':
 						await postcss([
 							postcssImport({
-								// skipDuplicates: false
+								skipDuplicates: false
 							}),
 						]).process(await fs.readFile(path.join(...testPath, 'style.css'), 'utf8'), {
 							parser: strictParse,
@@ -146,7 +146,6 @@ export function createServer(testPath, imageWasRequestedCallback, serverErrorCal
 							let { code } = lightningcss({
 								filename: path.join(...testPath, 'style.css'),
 								errorRecovery: true,
-								minify: false
 							});
 
 							res.end(code);
