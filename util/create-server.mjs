@@ -9,7 +9,6 @@ import { bundle as lightningcss } from 'lightningcss';
 import module from 'module';
 
 const require = module.createRequire(import.meta.url);
-// const postcssImport = require('../../postcss-import');
 const postcssImport = require('postcss-import');
 const strictParse = require('./postcss/strict-parse.cjs');
 
