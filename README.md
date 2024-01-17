@@ -167,7 +167,7 @@ Sub string matches are fine,
 | [002-sub-features/003-at-layer/004](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/003-at-layer/004) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [002-sub-features/003-at-layer/005](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/003-at-layer/005) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [002-sub-features/003-at-layer/006](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/003-at-layer/006) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| [002-sub-features/003-at-layer/007](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/003-at-layer/007) | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ |
+| [002-sub-features/003-at-layer/007](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/003-at-layer/007) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [002-sub-features/003-at-layer/008](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/003-at-layer/008) | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ |
 | [002-sub-features/003-at-layer/009](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/003-at-layer/009) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [002-sub-features/003-at-layer/010](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/003-at-layer/010) | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ |
@@ -212,7 +212,7 @@ Sub string matches are fine,
 | [999-irrelevant/url-format/001/relative-url](https://github.com/romainmenke/css-import-tests/tree/main/tests/999-irrelevant/url-format/001/relative-url) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [999-irrelevant/url-format/002](https://github.com/romainmenke/css-import-tests/tree/main/tests/999-irrelevant/url-format/002) | ✅ | ✅ | ❌ | ✅ | ❌ | ❌ |
 | [999-irrelevant/url-fragments/001](https://github.com/romainmenke/css-import-tests/tree/main/tests/999-irrelevant/url-fragments/001) | ✅ | ✅ | ❌ | ❌ | ✅ | ✅ |
-| Total | 104 / 114 | 111 / 114 | 104 / 114 | 71 / 114 | 114 / 114 | 101 / 114 |
+| Total | 104 / 114 | 111 / 114 | 104 / 114 | 72 / 114 | 114 / 114 | 101 / 114 |
 
 ## Contributing
 
