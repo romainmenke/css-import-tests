@@ -123,6 +123,8 @@ Sub string matches are fine,
 | [001-core-features/subresource/007](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/subresource/007) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [001-core-features/subresource/008](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/subresource/008) | ✅ | ✅ | ❌ | ❌ | ✅ | ❌ |
 | [001-core-features/subresource/009](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/subresource/009) | ✅ | ✅ | ❌ | ❌ | ✅ | ❌ |
+| [001-core-features/subresource/010](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/subresource/010) | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ |
+| [001-core-features/subresource/011](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/subresource/011) | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ |
 | [001-core-features/url-format/001/absolute-url](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/url-format/001/absolute-url) | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ |
 | [001-core-features/url-format/001/default](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/url-format/001/default) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [001-core-features/url-format/001/relative-url](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/url-format/001/relative-url) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
@@ -212,7 +214,7 @@ Sub string matches are fine,
 | [999-irrelevant/url-format/001/relative-url](https://github.com/romainmenke/css-import-tests/tree/main/tests/999-irrelevant/url-format/001/relative-url) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [999-irrelevant/url-format/002](https://github.com/romainmenke/css-import-tests/tree/main/tests/999-irrelevant/url-format/002) | ✅ | ✅ | ❌ | ✅ | ❌ | ❌ |
 | [999-irrelevant/url-fragments/001](https://github.com/romainmenke/css-import-tests/tree/main/tests/999-irrelevant/url-fragments/001) | ✅ | ✅ | ❌ | ❌ | ✅ | ✅ |
-| Total | 114 / 114 | 111 / 114 | 104 / 114 | 72 / 114 | 114 / 114 | 101 / 114 |
+| Total | 116 / 116 | 111 / 116 | 106 / 116 | 74 / 116 | 116 / 116 | 103 / 116 |
 
 ## Contributing
 
