@@ -6,7 +6,7 @@
   "scripts": {
     "test": "node ./test.mjs",
     "serve": "node ./serve.mjs",
-    "install:with-firefox": "PUPPETEER_PRODUCT=firefox npm rebuild puppeteer"
+    "install:browsers": "playwright install chromium firefox webkit"
   },
   "repository": {
     "type": "git",
@@ -24,7 +24,7 @@
     "lightningcss": "*",
     "postcss": "^8.4.31",
     "postcss-import": "*",
-    "puppeteer": "^22.0.0"
+    "playwright": "^1.43.1"
   },
   "volta": {
     "node": "21.1.0",

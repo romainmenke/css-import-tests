@@ -1,19 +1,10 @@
 import fs from "fs/promises";
 import path from "path";
-import puppeteer from "puppeteer";
+import { chromium, firefox, webkit } from "playwright";
 
 const { createTestSafe } = await import('./util/test.mjs')
 
 const onlyRunTest = process.argv.slice(2)[0];
-
-const firefox = await puppeteer.launch({
-	headless: 'new',
-	product: 'firefox',
-});
-
-const chrome = await puppeteer.launch({
-	headless: 'new',
-});
 
 const testCases = (await fs.readdir('./tests', { withFileTypes: true, recursive: true })).filter(dirent => {
 	return dirent.isFile() && dirent.name === 'style.css'
@@ -27,9 +18,14 @@ testCases.sort();
 
 const results = [];
 
+const chromiumInstance = await chromium.launch();
+const firefoxInstance = await firefox.launch();
+const webkitInstance = await webkit.launch();
+
 for (const testCase of testCases) {
-	const chromeResult = await createTestSafe(chrome, ['tests', ...testCase.split(path.sep)]);
-	const firefoxResult = await createTestSafe(firefox, ['tests', ...testCase.split(path.sep)]);
+	const chromeResult = await createTestSafe(chromiumInstance, ['tests', ...testCase.split(path.sep)]);
+	const firefoxResult = await createTestSafe(firefoxInstance, ['tests', ...testCase.split(path.sep)]);
+	const webkitResult = await createTestSafe(webkitInstance, ['tests', ...testCase.split(path.sep)]);
 
 	const chromeNativeResult = chromeResult.bundlers.find((x) => x.label === 'native');
 	const chromeRemainder = chromeResult.bundlers.filter((x) => x.label !== 'native');
@@ -39,6 +35,10 @@ for (const testCase of testCases) {
 	const firefoxRemainder = firefoxResult.bundlers.filter((x) => x.label !== 'native');
 	firefoxNativeResult.label = 'firefox';
 
+	const webkitNativeResult = webkitResult.bundlers.find((x) => x.label === 'native');
+	const webkitRemainder = webkitResult.bundlers.filter((x) => x.label !== 'native');
+	webkitNativeResult.label = 'webkit';
+
 	const combinedResult = {
 		...chromeResult,
 		errors: [
@@ -47,16 +47,24 @@ for (const testCase of testCases) {
 		bundlers: [
 			chromeNativeResult,
 			firefoxNativeResult,
-			...firefoxRemainder,
+			webkitNativeResult,
+			...chromeRemainder,
 		]
 	};
 
-	// for (const result of firefoxRemainder) {
-	// 	const pairedResult = chromeRemainder.find((x) => x.label === result.label);
+	// for (const result of chromeRemainder) {
+	// 	const pairedResults = [
+	// 		result,
+	// 		firefoxRemainder.find((x) => x.label === result.label),
+	// 		webkitRemainder.find((x) => x.label === result.label),
+	// 	];
 
-	// 	if (result.success !== pairedResult.success) {
+	// 	const allPassed = pairedResults.every((x) => x.success === true);
+	// 	const allFailed = pairedResults.every((x) => x.success === false);
+
+	// 	if (!allPassed && !allFailed) {
 	// 		result.success = false;
-	// 		combinedResult.errors.push(new Error(`When testing ${result.label} Firefox had success ${result.success} while Chrome had success ${pairedResult.success} for ${testCase}`));
+	// 		combinedResult.errors.push(new Error(`When testing ${result.label} got | chrome ${result.success} | firefox ${pairedResults[1].success} | webkit ${pairedResults[2].success} | for ${testCase}`));
 	// 	}
 	// }
 
@@ -64,22 +72,22 @@ for (const testCase of testCases) {
 }
 
 let failureCount = 0;
-let postcssImportFailureCount = 0;
-let nativeFailureCount = 0;
 
 let relevantTestCounter = 0;
 let chromeResultSuccessCounter = 0;
 let firefoxResultSuccessCounter = 0;
+let webkitResultSuccessCounter = 0;
 let csstoolsPostcssBundlerResultSuccessCounter = 0;
 let postcssImportResultSuccessCounter = 0;
 let lightningcssResultSuccessCounter = 0;
 let esbuildResultSuccessCounter = 0;
 
-console.log(`| Test | chrome | firefox | esbuild | lightningcss | p-bundler | p-import |`);
-console.log(`| ---- | ------ | ------- | ------- | ------------ | --------- | -------- |`);
+console.log(`| Test | chrome | firefox | webkit | esbuild | lightningcss | p-bundler | p-import |`);
+console.log(`| ---- | ------ | ------- | ------ | ------- | ------------ | --------- | -------- |`);
 for (const result of results) {
 	const chromeResultSuccess = result.bundlers.find((x => x.label === 'chrome')).success;
 	const firefoxResultSuccess = result.bundlers.find((x => x.label === 'firefox')).success;
+	const webkitResultSuccess = result.bundlers.find((x => x.label === 'firefox')).success;
 	const csstoolsPostcssBundlerResultSuccess = result.bundlers.find((x => x.label === 'csstools-postcss-bundler')).success;
 	const postcssImportResultSuccess = result.bundlers.find((x => x.label === 'postcss-import')).success;
 	const lightningcssResultSuccess = result.bundlers.find((x => x.label === 'lightningcss')).success;
@@ -87,6 +95,7 @@ for (const result of results) {
 
 	const chromeResult = chromeResultSuccess ? '✅' : '❌';
 	const firefoxResult = firefoxResultSuccess ? '✅' : '❌';
+	const webkitResult = webkitResultSuccess ? '✅' : '❌';
 	const csstoolsPostcssBundlerResult = csstoolsPostcssBundlerResultSuccess ? '✅' : '❌';
 	const postcssImportResult = postcssImportResultSuccess ? '✅' : '❌';
 	const lightningcssResult = lightningcssResultSuccess ? '✅' : '❌';
@@ -96,6 +105,7 @@ for (const result of results) {
 		relevantTestCounter++;
 		chromeResultSuccessCounter += chromeResultSuccess ? 1 : 0;
 		firefoxResultSuccessCounter += firefoxResultSuccess ? 1 : 0;
+		webkitResultSuccessCounter += webkitResultSuccess ? 1 : 0;
 		csstoolsPostcssBundlerResultSuccessCounter += csstoolsPostcssBundlerResultSuccess ? 1 : 0;
 		postcssImportResultSuccessCounter += postcssImportResultSuccess ? 1 : 0;
 		lightningcssResultSuccessCounter += lightningcssResultSuccess ? 1 : 0;
@@ -106,23 +116,15 @@ for (const result of results) {
 		result.label = `[${result.label}](https://github.com/romainmenke/css-import-tests/tree/main/tests/${result.label})`;
 	}
 
-	console.log(`| ${result.label} | ${chromeResult} | ${firefoxResult} | ${esbuildResult} | ${lightningcssResult} | ${csstoolsPostcssBundlerResult} | ${postcssImportResult} |`);
+	console.log(`| ${result.label} | ${chromeResult} | ${firefoxResult} | ${webkitResult} | ${esbuildResult} | ${lightningcssResult} | ${csstoolsPostcssBundlerResult} | ${postcssImportResult} |`);
 }
 
-console.log(`| Total | ${chromeResultSuccessCounter} / ${relevantTestCounter} | ${firefoxResultSuccessCounter} / ${relevantTestCounter} | ${esbuildResultSuccessCounter} / ${relevantTestCounter} | ${lightningcssResultSuccessCounter} / ${relevantTestCounter} | ${csstoolsPostcssBundlerResultSuccessCounter} / ${relevantTestCounter} | ${postcssImportResultSuccessCounter} / ${relevantTestCounter} |`);
+console.log(`| Total | ${chromeResultSuccessCounter} / ${relevantTestCounter} | ${firefoxResultSuccessCounter} / ${relevantTestCounter} | ${webkitResultSuccessCounter} / ${relevantTestCounter} | ${esbuildResultSuccessCounter} / ${relevantTestCounter} | ${lightningcssResultSuccessCounter} / ${relevantTestCounter} | ${csstoolsPostcssBundlerResultSuccessCounter} / ${relevantTestCounter} | ${postcssImportResultSuccessCounter} / ${relevantTestCounter} |`);
 
 if (process.env.DEBUG) {
 	for (const result of results) {
 		if (result.success === false) {
 			failureCount++;
-
-			if (!result.bundlers.find((x => x.label === 'postcss-import')).success) {
-				postcssImportFailureCount++;
-			}
-
-			if (!result.bundlers.find((x => x.label === 'native')).success) {
-				nativeFailureCount++;
-			}
 
 			console.error(`FAIL - ${result.label}`);
 			console.table(result.bundlers);
@@ -132,10 +134,11 @@ if (process.env.DEBUG) {
 
 			continue;
 		}
-	
+
 		console.log(`OK   - ${result.label}`);
 	}
 }
 
-await firefox.close();
-await chrome.close();
+await firefoxInstance.close();
+await chromiumInstance.close();
+await webkitInstance.close();

@@ -50,9 +50,14 @@ export async function createTest(browser, testPath) {
 
 	server.listen(8080);
 
-	const page = await browser.newPage();
-	await page.setCacheEnabled(false);
-	
+	const context = await (('newContext' in browser) ? browser.newContext() : browser);
+
+	const page = await context.newPage();
+
+	if ('setCacheEnabled' in page) {
+		await page.setCacheEnabled(false);
+	}
+
 	page.on('pageerror', (msg) => {
 		pageError = new Error(msg);
 		errors.push(pageError);
@@ -66,6 +71,7 @@ export async function createTest(browser, testPath) {
 	{
 		resetState();
 		await page.goto(`http://localhost:8080/native.html`);
+		await page.waitForLoadState();
 		const result = await page.evaluate(async () => {
 			const box = document.getElementById('box');
 			const style = window.getComputedStyle(box);
@@ -87,6 +93,7 @@ export async function createTest(browser, testPath) {
 	{
 		resetState();
 		await page.goto(`http://localhost:8080/csstools-postcss-bundler.html`);
+		await page.waitForLoadState();
 		const result = await page.evaluate(async () => {
 			const box = document.getElementById('box');
 			const style = window.getComputedStyle(box);
@@ -108,6 +115,7 @@ export async function createTest(browser, testPath) {
 	{
 		resetState();
 		await page.goto(`http://localhost:8080/postcss-import.html`);
+		await page.waitForLoadState();
 		const result = await page.evaluate(async () => {
 			const box = document.getElementById('box');
 			const style = window.getComputedStyle(box);
@@ -129,6 +137,7 @@ export async function createTest(browser, testPath) {
 	{
 		resetState();
 		await page.goto(`http://localhost:8080/lightningcss.html`);
+		await page.waitForLoadState();
 		const result = await page.evaluate(async () => {
 			const box = document.getElementById('box');
 			const style = window.getComputedStyle(box);
@@ -150,6 +159,7 @@ export async function createTest(browser, testPath) {
 	{
 		resetState();
 		await page.goto(`http://localhost:8080/esbuild.html`);
+		await page.waitForLoadState();
 		const result = await page.evaluate(async () => {
 			const box = document.getElementById('box');
 			const style = window.getComputedStyle(box);
