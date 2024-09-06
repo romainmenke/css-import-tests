@@ -18,9 +18,15 @@ testCases.sort();
 
 const results = [];
 
-const chromiumInstance = await chromium.launch();
-const firefoxInstance = await firefox.launch();
-const webkitInstance = await webkit.launch();
+const [
+	chromiumInstance,
+	firefoxInstance,
+	webkitInstance,
+] = await Promise.all([
+	chromium.launch(),
+	firefox.launch(),
+	webkit.launch(),
+]);
 
 for (const testCase of testCases) {
 	const chromeResult = await createTestSafe(chromiumInstance, ['tests', ...testCase.split(path.sep)]);
@@ -139,6 +145,8 @@ if (process.env.DEBUG) {
 	}
 }
 
-await firefoxInstance.close();
-await chromiumInstance.close();
-await webkitInstance.close();
+await Promise.all([
+	firefoxInstance.close(),
+	chromiumInstance.close(),
+	webkitInstance.close(),
+]);

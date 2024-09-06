@@ -71,7 +71,7 @@ export async function createTest(browser, testPath) {
 	{
 		resetState();
 		await page.goto(`http://localhost:8080/native.html`);
-		await page.waitForLoadState();
+		await page.waitForLoadState('domcontentloaded');
 		const result = await page.evaluate(async () => {
 			const box = document.getElementById('box');
 			const style = window.getComputedStyle(box);
@@ -93,7 +93,7 @@ export async function createTest(browser, testPath) {
 	{
 		resetState();
 		await page.goto(`http://localhost:8080/csstools-postcss-bundler.html`);
-		await page.waitForLoadState();
+		await page.waitForLoadState('domcontentloaded');
 		const result = await page.evaluate(async () => {
 			const box = document.getElementById('box');
 			const style = window.getComputedStyle(box);
@@ -115,7 +115,7 @@ export async function createTest(browser, testPath) {
 	{
 		resetState();
 		await page.goto(`http://localhost:8080/postcss-import.html`);
-		await page.waitForLoadState();
+		await page.waitForLoadState('domcontentloaded');
 		const result = await page.evaluate(async () => {
 			const box = document.getElementById('box');
 			const style = window.getComputedStyle(box);
@@ -137,7 +137,7 @@ export async function createTest(browser, testPath) {
 	{
 		resetState();
 		await page.goto(`http://localhost:8080/lightningcss.html`);
-		await page.waitForLoadState();
+		await page.waitForLoadState('domcontentloaded');
 		const result = await page.evaluate(async () => {
 			const box = document.getElementById('box');
 			const style = window.getComputedStyle(box);
@@ -159,7 +159,7 @@ export async function createTest(browser, testPath) {
 	{
 		resetState();
 		await page.goto(`http://localhost:8080/esbuild.html`);
-		await page.waitForLoadState();
+		await page.waitForLoadState('domcontentloaded');
 		const result = await page.evaluate(async () => {
 			const box = document.getElementById('box');
 			const style = window.getComputedStyle(box);
