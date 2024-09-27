@@ -4,7 +4,11 @@ import { chromium, firefox, webkit } from "playwright";
 
 const { createTestSafe } = await import('./util/test.mjs')
 
-const onlyRunTest = process.argv.slice(2)[0];
+let onlyRunTest = process.argv.slice(2)[0];
+
+if (onlyRunTest && onlyRunTest.startsWith('tests/')) {
+	onlyRunTest = onlyRunTest.slice(6);
+}
 
 const testCases = (await fs.readdir('./tests', { withFileTypes: true, recursive: true })).filter(dirent => {
 	return dirent.isFile() && dirent.name === 'style.css'
@@ -93,7 +97,7 @@ console.log(`| ---- | ------ | ------- | ------ | ------- | ------------ | -----
 for (const result of results) {
 	const chromeResultSuccess = result.bundlers.find((x => x.label === 'chrome')).success;
 	const firefoxResultSuccess = result.bundlers.find((x => x.label === 'firefox')).success;
-	const webkitResultSuccess = result.bundlers.find((x => x.label === 'firefox')).success;
+	const webkitResultSuccess = result.bundlers.find((x => x.label === 'webkit')).success;
 	const csstoolsPostcssBundlerResultSuccess = result.bundlers.find((x => x.label === 'csstools-postcss-bundler')).success;
 	const postcssImportResultSuccess = result.bundlers.find((x => x.label === 'postcss-import')).success;
 	const lightningcssResultSuccess = result.bundlers.find((x => x.label === 'lightningcss')).success;

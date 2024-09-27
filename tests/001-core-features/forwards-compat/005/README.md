@@ -1,1 +1,1 @@
-Media query lists can be partially valid, swallowing any trailing parts
+Media query lists can be partially valid
