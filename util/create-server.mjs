@@ -54,7 +54,12 @@ function html(bundle = 'native') {
 	<link rel="stylesheet" href="style.css?bundle=${bundle}">
 </head>
 <body>
-	<div id="box" class="box">
+	<div class="donut-edge">
+		<div class="donut-body">
+			<div class="donut-hole">
+				<div id="box" class="box"></div>
+			</div>
+		</div>
 	</div>
 </body>
 </html>
