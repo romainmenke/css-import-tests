@@ -14,7 +14,8 @@ Currently this checks :
 - `chrome`
 - `firefox`
 - `esbuild`
-- `lightningcss`
+- `lightningcss` (abbr. `⚡️`)
+- `bun`
 - `@csstools/postcss-bundler` (abbr. `p-bundler`)
 - `postcss-import` (abbr. `p-import`)
 
@@ -43,6 +44,14 @@ let { code } = lightningcss({
 	filename: 'style.css',
 	errorRecovery: true, /* The CSS language is intended to be forgiving */
 });
+```
+
+#### `bun`
+
+Still experimental. Fails with fatal errors. Not remotely compliant.
+
+```bash
+bun build --experimental-css ./style.css
 ```
 
 #### `@csstools/postcss-bundler`
@@ -81,7 +90,7 @@ Sub string matches are fine,
 
 ## Current state
 
-| Test | chrome | firefox | webkit | esbuild | lightningcss | bun | p-bundler | p-import |
+| Test | chrome | firefox | webkit | esbuild | ⚡️ | bun | p-bundler | p-import |
 | ---- | ------ | ------- | ------ | ------- | ------------ | --- | --------- | -------- |
 | [001-core-features/001/absolute-url](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/001/absolute-url) | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ |
 | [001-core-features/001/default](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/001/default) | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ |

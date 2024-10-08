@@ -94,8 +94,8 @@ let lightningcssResultSuccessCounter = 0;
 let bunResultSuccessCounter = 0;
 let esbuildResultSuccessCounter = 0;
 
-console.log(`| Test | chrome | firefox | webkit | esbuild | lightningcss | bun | p-bundler | p-import |`);
-console.log(`| ---- | ------ | ------- | ------ | ------- | ------------ | --- | --------- | -------- |`);
+console.log(`| Test | chrome | firefox | webkit | esbuild | ⚡️ | bun | p-bundler | p-import |`);
+console.log(`| ---- | ------ | ------- | ------ | ------- | - | --- | --------- | -------- |`);
 for (const result of results) {
 	const chromeResultSuccess = result.bundlers.find((x => x.label === 'chrome')).success;
 	const firefoxResultSuccess = result.bundlers.find((x => x.label === 'firefox')).success;
