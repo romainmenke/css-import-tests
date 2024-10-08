@@ -158,6 +158,28 @@ export async function createTest(browser, testPath) {
 
 	{
 		resetState();
+		await page.goto(`http://localhost:8080/bun.html`);
+		await page.waitForLoadState('domcontentloaded');
+		const result = await page.evaluate(async () => {
+			const box = document.getElementById('box');
+			const style = window.getComputedStyle(box);
+			return [style.backgroundColor, style.backgroundImage];
+		});
+
+		results.bundlers.push({
+			label: 'bun',
+			success: (!serverError && !pageError && !requestHandlerError) && (
+				result[0] === 'rgb(0, 128, 0)' ||
+				(
+					imageWasRequested && result[1].includes('/green.png')
+				)
+			),
+			result: result,
+		});
+	}
+
+	{
+		resetState();
 		await page.goto(`http://localhost:8080/esbuild.html`);
 		await page.waitForLoadState('domcontentloaded');
 		const result = await page.evaluate(async () => {

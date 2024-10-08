@@ -84,16 +84,18 @@ for (const testCase of testCases) {
 let failureCount = 0;
 
 let relevantTestCounter = 0;
+
 let chromeResultSuccessCounter = 0;
 let firefoxResultSuccessCounter = 0;
 let webkitResultSuccessCounter = 0;
 let csstoolsPostcssBundlerResultSuccessCounter = 0;
 let postcssImportResultSuccessCounter = 0;
 let lightningcssResultSuccessCounter = 0;
+let bunResultSuccessCounter = 0;
 let esbuildResultSuccessCounter = 0;
 
-console.log(`| Test | chrome | firefox | webkit | esbuild | lightningcss | p-bundler | p-import |`);
-console.log(`| ---- | ------ | ------- | ------ | ------- | ------------ | --------- | -------- |`);
+console.log(`| Test | chrome | firefox | webkit | esbuild | lightningcss | bun | p-bundler | p-import |`);
+console.log(`| ---- | ------ | ------- | ------ | ------- | ------------ | --- | --------- | -------- |`);
 for (const result of results) {
 	const chromeResultSuccess = result.bundlers.find((x => x.label === 'chrome')).success;
 	const firefoxResultSuccess = result.bundlers.find((x => x.label === 'firefox')).success;
@@ -101,6 +103,7 @@ for (const result of results) {
 	const csstoolsPostcssBundlerResultSuccess = result.bundlers.find((x => x.label === 'csstools-postcss-bundler')).success;
 	const postcssImportResultSuccess = result.bundlers.find((x => x.label === 'postcss-import')).success;
 	const lightningcssResultSuccess = result.bundlers.find((x => x.label === 'lightningcss')).success;
+	const bunResultSuccess = result.bundlers.find((x => x.label === 'bun')).success;
 	const esbuildResultSuccess = result.bundlers.find((x => x.label === 'esbuild')).success;
 
 	const chromeResult = chromeResultSuccess ? '✅' : '❌';
@@ -109,6 +112,7 @@ for (const result of results) {
 	const csstoolsPostcssBundlerResult = csstoolsPostcssBundlerResultSuccess ? '✅' : '❌';
 	const postcssImportResult = postcssImportResultSuccess ? '✅' : '❌';
 	const lightningcssResult = lightningcssResultSuccess ? '✅' : '❌';
+	const bunResult = bunResultSuccess ? '✅' : '❌';
 	const esbuildResult = esbuildResultSuccess ? '✅' : '❌';
 
 	if (result.label.startsWith('001-') || result.label.startsWith('002-')) {
@@ -119,6 +123,7 @@ for (const result of results) {
 		csstoolsPostcssBundlerResultSuccessCounter += csstoolsPostcssBundlerResultSuccess ? 1 : 0;
 		postcssImportResultSuccessCounter += postcssImportResultSuccess ? 1 : 0;
 		lightningcssResultSuccessCounter += lightningcssResultSuccess ? 1 : 0;
+		bunResultSuccessCounter += bunResultSuccess ? 1 : 0;
 		esbuildResultSuccessCounter += esbuildResultSuccess ? 1 : 0;
 	}
 
@@ -126,10 +131,10 @@ for (const result of results) {
 		result.label = `[${result.label}](https://github.com/romainmenke/css-import-tests/tree/main/tests/${result.label})`;
 	}
 
-	console.log(`| ${result.label} | ${chromeResult} | ${firefoxResult} | ${webkitResult} | ${esbuildResult} | ${lightningcssResult} | ${csstoolsPostcssBundlerResult} | ${postcssImportResult} |`);
+	console.log(`| ${result.label} | ${chromeResult} | ${firefoxResult} | ${webkitResult} | ${esbuildResult} | ${lightningcssResult} | ${bunResult} | ${csstoolsPostcssBundlerResult} | ${postcssImportResult} |`);
 }
 
-console.log(`| Total | ${chromeResultSuccessCounter} / ${relevantTestCounter} | ${firefoxResultSuccessCounter} / ${relevantTestCounter} | ${webkitResultSuccessCounter} / ${relevantTestCounter} | ${esbuildResultSuccessCounter} / ${relevantTestCounter} | ${lightningcssResultSuccessCounter} / ${relevantTestCounter} | ${csstoolsPostcssBundlerResultSuccessCounter} / ${relevantTestCounter} | ${postcssImportResultSuccessCounter} / ${relevantTestCounter} |`);
+console.log(`| Total | ${chromeResultSuccessCounter} / ${relevantTestCounter} | ${firefoxResultSuccessCounter} / ${relevantTestCounter} | ${webkitResultSuccessCounter} / ${relevantTestCounter} | ${esbuildResultSuccessCounter} / ${relevantTestCounter} | ${lightningcssResultSuccessCounter} / ${relevantTestCounter} | ${bunResultSuccessCounter} / ${relevantTestCounter} | ${csstoolsPostcssBundlerResultSuccessCounter} / ${relevantTestCounter} | ${postcssImportResultSuccessCounter} / ${relevantTestCounter} |`);
 
 if (process.env.DEBUG) {
 	for (const result of results) {

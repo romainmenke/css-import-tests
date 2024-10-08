@@ -20,11 +20,12 @@
   "homepage": "https://github.com/romainmenke/css-import-tests#readme",
   "dependencies": {
     "@csstools/postcss-bundler": "*",
+    "bun": "*",
     "esbuild": "*",
     "lightningcss": "*",
+    "playwright": "^1.43.1",
     "postcss": "^8.4.31",
-    "postcss-import": "*",
-    "playwright": "^1.43.1"
+    "postcss-import": "*"
   },
   "volta": {
     "node": "22.8.0",
