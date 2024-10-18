@@ -1,0 +1,8 @@
+@layer a, b;
+@import url("http://localhost:8080/b.css") layer(b);
+
+@layer a {
+	.box {
+		background-color: red;
+	}
+}
