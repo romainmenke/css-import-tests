@@ -69,9 +69,9 @@ function html(bundle = 'native') {
 }
 
 export function createServer(testPath, imageWasRequestedCallback, serverErrorCallback, requestErrorCallback) {
-	const server = http.createServer(async (req, res) => {
+	const server = http.createServer(async (req, res) => {		
 		const parsedUrl = new URL(req.url, 'http://localhost:8080');
-		const pathname = parsedUrl.pathname;
+		const pathname = decodeURIComponent(parsedUrl.pathname);
 		const bundle = parsedUrl.searchParams.get('bundle');
 		const backgroundColor = parsedUrl.searchParams.get('background-color');
 

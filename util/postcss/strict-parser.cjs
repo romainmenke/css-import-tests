@@ -3,7 +3,6 @@ let Parser = require('postcss/lib/parser')
 let Declaration = require('postcss/lib/declaration')
 let Comment = require('postcss/lib/comment')
 let AtRule = require('postcss/lib/at-rule')
-let Root = require('postcss/lib/root')
 let Rule = require('postcss/lib/rule')
 
 const SAFE_COMMENT_NEIGHBOR = {
@@ -417,7 +416,7 @@ class StrictParser extends Parser {
 			this.current.raws.semicolon = this.semicolon
 		}
 		this.current.raws.after = (this.current.raws.after || '') + this.spaces
-		this.root.source.end = this.getPosition(this.tokenizer.position())
+		this.root.source.end = this.getPosition(this.input.length)
 	}
 
 	freeSemicolon(token) {

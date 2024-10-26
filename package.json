@@ -20,6 +20,7 @@
   "homepage": "https://github.com/romainmenke/css-import-tests#readme",
   "dependencies": {
     "@csstools/postcss-bundler": "*",
+    "@csstools/css-tokenizer": "*",
     "bun": "*",
     "esbuild": "*",
     "lightningcss": "*",
