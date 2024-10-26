@@ -153,6 +153,7 @@ Sub string matches are fine,
 | [001-core-features/url-fragments/003](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/url-fragments/003) | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ | ❌ |
 | [001-core-features/url-fragments/004](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/url-fragments/004) | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ✅ | ❌ |
 | [001-core-features/url-fragments/005](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/url-fragments/005) | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ✅ | ❌ |
+| [001-core-features/url-fragments/006](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/url-fragments/006) | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ✅ | ✅ |
 | [002-sub-features/001-data-urls/001](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/001-data-urls/001) | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ | ✅ |
 | [002-sub-features/001-data-urls/002](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/001-data-urls/002) | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ | ✅ |
 | [002-sub-features/001-data-urls/003](https://github.com/romainmenke/css-import-tests/tree/main/tests/002-sub-features/001-data-urls/003) | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ | ✅ |
@@ -247,9 +248,8 @@ Sub string matches are fine,
 | [999-irrelevant/url-format/001/absolute-url](https://github.com/romainmenke/css-import-tests/tree/main/tests/999-irrelevant/url-format/001/absolute-url) | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ |
 | [999-irrelevant/url-format/001/default](https://github.com/romainmenke/css-import-tests/tree/main/tests/999-irrelevant/url-format/001/default) | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ |
 | [999-irrelevant/url-format/001/relative-url](https://github.com/romainmenke/css-import-tests/tree/main/tests/999-irrelevant/url-format/001/relative-url) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| [999-irrelevant/url-format/002](https://github.com/romainmenke/css-import-tests/tree/main/tests/999-irrelevant/url-format/002) | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ✅ | ✅ |
 | [999-irrelevant/url-fragments/001](https://github.com/romainmenke/css-import-tests/tree/main/tests/999-irrelevant/url-fragments/001) | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ✅ | ❌ |
-| Total | 126 / 142 | 121 / 142 | 126 / 142 | 115 / 142 | 80 / 142 | 13 / 142 | 141 / 142 | 102 / 142 |
+| Total | 127 / 143 | 122 / 143 | 127 / 143 | 115 / 143 | 81 / 143 | 13 / 143 | 142 / 143 | 103 / 143 |
 
 ## Contributing
 
