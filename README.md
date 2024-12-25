@@ -97,6 +97,7 @@ Sub string matches are fine,
 | [001-core-features/001/foldername-that-is-a-domain](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/001/foldername-that-is-a-domain) | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ |
 | [001-core-features/001/relative-url](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/001/relative-url) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [001-core-features/at-charset/001](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/at-charset/001) | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ |
+| [001-core-features/at-charset/002](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/at-charset/002) | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ |
 | [001-core-features/at-keyframes/001](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/at-keyframes/001) | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ |
 | [001-core-features/before-other-styles/001](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/before-other-styles/001) | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ |
 | [001-core-features/before-other-styles/002](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/before-other-styles/002) | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ |
@@ -250,7 +251,7 @@ Sub string matches are fine,
 | [999-irrelevant/url-format/001/default](https://github.com/romainmenke/css-import-tests/tree/main/tests/999-irrelevant/url-format/001/default) | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ |
 | [999-irrelevant/url-format/001/relative-url](https://github.com/romainmenke/css-import-tests/tree/main/tests/999-irrelevant/url-format/001/relative-url) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [999-irrelevant/url-fragments/001](https://github.com/romainmenke/css-import-tests/tree/main/tests/999-irrelevant/url-fragments/001) | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ✅ | ❌ |
-| Total | 128 / 144 | 123 / 144 | 128 / 144 | 115 / 144 | 82 / 144 | 13 / 144 | 143 / 144 | 103 / 144 |
+| Total | 129 / 145 | 124 / 145 | 129 / 145 | 116 / 145 | 83 / 145 | 13 / 145 | 144 / 145 | 103 / 145 |
 
 ## Contributing
 
