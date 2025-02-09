@@ -116,8 +116,8 @@ Sub string matches are fine,
 | [001-core-features/escape-sequences/001](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/escape-sequences/001) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [001-core-features/escape-sequences/002](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/escape-sequences/002) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [001-core-features/escape-sequences/003](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/escape-sequences/003) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ |
-| [001-core-features/escape-sequences/004](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/escape-sequences/004) | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ |
-| [001-core-features/escape-sequences/005](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/escape-sequences/005) | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ |
+| [001-core-features/escape-sequences/004](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/escape-sequences/004) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ |
+| [001-core-features/escape-sequences/005](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/escape-sequences/005) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ |
 | [001-core-features/forwards-compat/001](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/forwards-compat/001) | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ |
 | [001-core-features/forwards-compat/002](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/forwards-compat/002) | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ |
 | [001-core-features/forwards-compat/003](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/forwards-compat/003) | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ |
@@ -126,8 +126,8 @@ Sub string matches are fine,
 | [001-core-features/forwards-compat/006](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/forwards-compat/006) | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ | ✅ |
 | [001-core-features/forwards-compat/007](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/forwards-compat/007) | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ |
 | [001-core-features/forwards-compat/008](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/forwards-compat/008) | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ |
-| [001-core-features/input-preprocessing/001](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/input-preprocessing/001) | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ |
-| [001-core-features/input-preprocessing/002](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/input-preprocessing/002) | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ |
+| [001-core-features/input-preprocessing/001](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/input-preprocessing/001) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ |
+| [001-core-features/input-preprocessing/002](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/input-preprocessing/002) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ |
 | [001-core-features/namespace/001](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/namespace/001) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [001-core-features/namespace/002](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/namespace/002) | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ |
 | [001-core-features/relative-paths/001](https://github.com/romainmenke/css-import-tests/tree/main/tests/001-core-features/relative-paths/001) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
@@ -251,7 +251,7 @@ Sub string matches are fine,
 | [999-irrelevant/url-format/001/default](https://github.com/romainmenke/css-import-tests/tree/main/tests/999-irrelevant/url-format/001/default) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [999-irrelevant/url-format/001/relative-url](https://github.com/romainmenke/css-import-tests/tree/main/tests/999-irrelevant/url-format/001/relative-url) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | [999-irrelevant/url-fragments/001](https://github.com/romainmenke/css-import-tests/tree/main/tests/999-irrelevant/url-fragments/001) | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ✅ | ❌ |
-| Total | 129 / 145 | 124 / 145 | 129 / 145 | 116 / 145 | 83 / 145 | 89 / 145 | 144 / 145 | 103 / 145 |
+| Total | 129 / 145 | 124 / 145 | 129 / 145 | 116 / 145 | 83 / 145 | 93 / 145 | 144 / 145 | 103 / 145 |
 
 ## Contributing
 
