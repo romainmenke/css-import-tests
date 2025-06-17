@@ -24,12 +24,12 @@
     "bun": "*",
     "esbuild": "*",
     "lightningcss": "*",
-    "playwright": "^1.50.0",
-    "postcss": "^8.5.1",
+    "playwright": "^1.53.0",
+    "postcss": "^8.5.6",
     "postcss-import": "*"
   },
   "volta": {
-    "node": "22.8.0",
-    "npm": "10.2.2"
+    "node": "24.2.0",
+    "npm": "11.4.2"
   }
 }
