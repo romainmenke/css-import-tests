@@ -16,7 +16,7 @@ if (onlyRunTest.startsWith('tests/')) {
 const testCase = (await fs.readdir('./tests', { withFileTypes: true, recursive: true })).filter(dirent => {
 	return dirent.isFile() && dirent.name === 'style.css'
 }).map(dirent => {
-	return path.relative('tests', dirent.path);
+	return path.relative('tests', dirent.parentPath);
 }).sort().find((x) => {
 	return x.includes(onlyRunTest);
 });

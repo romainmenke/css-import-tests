@@ -5,7 +5,7 @@ import http from 'node:http';
 import path from 'node:path';
 import postcss from 'postcss';
 import postcssBundler from '@csstools/postcss-bundler';
-import { bundle as lightningcss } from 'lightningcss';
+import { bundleAsync as lightningcss } from 'lightningcss';
 import module from 'node:module';
 import { spawn } from 'node:child_process';
 
@@ -154,9 +154,20 @@ export function createServer(testPath, imageWasRequestedCallback, serverErrorCal
 						return;
 					case 'lightningcss':
 						try {
-							let { code } = lightningcss({
+							let { code } = await lightningcss({
 								filename: path.join(...testPath, 'style.css'),
 								errorRecovery: true,
+								resolver: {
+									read(filePath) {
+										return fsSync.readFileSync(filePath, 'utf8');
+									},
+									resolve(specifier, from) {
+										if (/^https?:/.test(specifier)) {
+											return { external: specifier };
+										}
+										return path.resolve(path.dirname(from), specifier);
+									}
+								}
 							});
 
 							res.end(code);
