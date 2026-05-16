@@ -18,6 +18,8 @@ Currently this checks :
 - `@csstools/postcss-bundler` (abbr. `p-bundler`)
 - `postcss-import` (abbr. `p-import`)
 
+_`bun` was previously tracked here but was removed after it was rewritten in rust with an LLM_
+
 ### Configs
 
 #### `esbuild`
