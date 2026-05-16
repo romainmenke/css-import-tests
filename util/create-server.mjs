@@ -26,7 +26,6 @@ function index() {
 		<li><a href="./native.html">native</a></li>
 		<li><a href="./esbuild.html">esbuild</a></li>
 		<li><a href="./lightningcss.html">lightningcss</a></li>
-		<li><a href="./bun.html">bun</a></li>
 		<li><a href="./csstools-postcss-bundler.html">@csstools/postcss-bundler</a></li>
 		<li><a href="./postcss-import.html">postcss-import</a></li>
 	</ul>
@@ -100,11 +99,6 @@ export function createServer(testPath, imageWasRequestedCallback, serverErrorCal
 				res.setHeader('Content-type', 'text/html');
 				res.writeHead(200);
 				res.end(html('lightningcss'));
-				return;
-			case '/bun.html':
-				res.setHeader('Content-type', 'text/html');
-				res.writeHead(200);
-				res.end(html('bun'));
 				return;
 			case '/esbuild.html':
 				res.setHeader('Content-type', 'text/html');
@@ -189,47 +183,6 @@ export function createServer(testPath, imageWasRequestedCallback, serverErrorCal
 							})
 
 							res.end(esBundle.outputFiles[0].text);
-						} catch (e) {
-							requestErrorCallback(e);
-
-							res.end('');
-						}
-
-						return;
-					case 'bun':
-						try {
-							const result = await (new Promise((resolve, reject) => {
-								const bun = spawn(
-									path.join('node_modules', '.bin', 'bun'),
-									[
-										'build',
-										'--experimental-css',
-										path.join(...testPath, 'style.css'),
-									]
-								);
-
-								let stdoutBuffer = '';
-								let stderrBuffer = '';
-
-								bun.stdout.on('data', (data) => {
-									stdoutBuffer += data.toString('utf-8');
-								});
-
-								bun.stderr.on('data', (data) => {
-									stderrBuffer += data.toString('utf-8');
-								});
-
-								bun.on('close', (code) => {
-									if (code !== 0) {
-										reject(new Error(`bun exited with code: ${code}\n\t${stderrBuffer}`));
-										return;
-									}
-
-									resolve(stdoutBuffer);
-								});
-							}));
-
-							res.end(result);
 						} catch (e) {
 							requestErrorCallback(e);
 

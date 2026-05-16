@@ -21,7 +21,6 @@
   "dependencies": {
     "@csstools/postcss-bundler": "*",
     "@csstools/css-tokenizer": "*",
-    "bun": "*",
     "esbuild": "*",
     "lightningcss": "*",
     "playwright": "^1.53.0",
@@ -29,7 +28,6 @@
     "postcss-import": "*"
   },
   "volta": {
-    "node": "24.2.0",
-    "npm": "11.4.2"
+    "node": "26.1.0"
   }
 }
