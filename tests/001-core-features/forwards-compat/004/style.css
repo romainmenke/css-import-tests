@@ -1,1 +1,2 @@
-@import url('green.css' url-mod);
+@import url(green.css);
+@import url('red.css' url-mod);
