@@ -1,8 +1,23 @@
 import fs from "fs/promises";
+import fsSync from "fs";
+import os from "os";
 import path from "path";
 import { chromium, firefox, webkit } from "playwright";
 
 const { createTestSafe } = await import('./util/test.mjs')
+
+// Gecko resolves its app-data directory (~/Library/Application Support/Firefox)
+// independently of -profile, and macOS 27 TCC-protects that directory, so
+// firefox.launch() hangs unless the host process has Full Disk Access.
+// Pointing CoreFoundation's home at an isolated temp dir avoids the lookup.
+// Root cause: https://github.com/microsoft/playwright/issues/42768
+// Upstream Gecko fix (not yet in shipped builds): https://phabricator.services.mozilla.com/D326501
+const FIREFOX_LAUNCH_OPTIONS = {};
+if (process.platform === 'darwin') {
+	const firefoxUserHome = path.join(os.tmpdir(), 'playwright-firefox-home');
+	fsSync.mkdirSync(firefoxUserHome, { recursive: true });
+	FIREFOX_LAUNCH_OPTIONS.env = { ...process.env, CFFIXED_USER_HOME: firefoxUserHome };
+}
 
 let onlyRunTest = process.argv.slice(2)[0];
 
@@ -28,7 +43,7 @@ const [
 	webkitInstance,
 ] = await Promise.all([
 	chromium.launch(),
-	firefox.launch(),
+	firefox.launch(FIREFOX_LAUNCH_OPTIONS),
 	webkit.launch(),
 ]);
 

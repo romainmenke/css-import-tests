@@ -1,0 +1,2 @@
+@import url("green.css");
+@media screen { @import url("red.css"); }

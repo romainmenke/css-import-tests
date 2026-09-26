@@ -1,4 +1,15 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
 import { createServer } from './create-server.mjs';
+
+async function readLines(testPath, name) {
+	try {
+		const content = await fs.readFile(path.join(...testPath, name), 'utf8');
+		return content.split(/\r?\n/).map((line) => line.trim()).filter(Boolean);
+	} catch {
+		return [];
+	}
+}
 
 export async function createTestSafe(browser, testPath) {
 	try {
@@ -24,6 +35,9 @@ export async function createTest(browser, testPath) {
 	let serverError = null;
 
 	let imageWasRequested = false;
+	let requestedCss = [];
+
+	const expectNoRequest = await readLines(testPath, 'expect-no-request.txt');
 
 	const resetState = () => {
 		pageError = null;
@@ -31,6 +45,7 @@ export async function createTest(browser, testPath) {
 		serverError = null;
 
 		imageWasRequested = false;
+		requestedCss = [];
 	}
 
 	const server = createServer(
@@ -45,6 +60,9 @@ export async function createTest(browser, testPath) {
 		(e) => {
 			requestHandlerError = e;
 			errors.push(e);
+		},
+		(pathname) => {
+			requestedCss.push(pathname);
 		}
 	);
 
@@ -85,7 +103,7 @@ export async function createTest(browser, testPath) {
 				(
 					imageWasRequested && result[1].includes('/green.png')
 				)
-			),
+			) && !expectNoRequest.some((name) => requestedCss.some((pathname) => pathname === `/${name}` || pathname.endsWith(`/${name}`))),
 			result: result,
 		});
 	}

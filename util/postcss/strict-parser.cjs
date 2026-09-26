@@ -568,11 +568,12 @@ class StrictParser extends Parser {
 	}
 
 	unknownWord(tokens) {
-		throw this.input.error(
-			'Unknown word',
-			{ offset: tokens[0][2] },
-			{ offset: tokens[0][2] + tokens[0][1].length }
-		)
+		// DO not throw on unknown words
+		// throw this.input.error(
+		// 	'Unknown word',
+		// 	{ offset: tokens[0][2] },
+		// 	{ offset: tokens[0][2] + tokens[0][1].length }
+		// )
 	}
 
 	unexpectedClose(token) {

@@ -7,11 +7,16 @@ import postcss from 'postcss';
 import postcssBundler from '@csstools/postcss-bundler';
 import { bundleAsync as lightningcss } from 'lightningcss';
 import module from 'node:module';
-import { spawn } from 'node:child_process';
 
 const require = module.createRequire(import.meta.url);
 const postcssImport = require('postcss-import');
 const strictParse = require('./postcss/strict-parse.cjs');
+
+const CONTENT_TYPES = {
+	'.html': 'text/html',
+	'.txt': 'text/plain',
+	'.xml': 'application/xml',
+};
 
 function index() {
 	return `<!DOCTYPE html>
@@ -34,7 +39,9 @@ function index() {
 `
 }
 
-function html(bundle = 'native') {
+function html(bundle = 'native', extraClasses = []) {
+	const classList = ['box', ...extraClasses].filter(Boolean).join(' ');
+
 	return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,7 +65,7 @@ function html(bundle = 'native') {
 	<div class="donut-edge">
 		<div class="donut-body">
 			<div class="donut-hole">
-				<div id="box" class="box"></div>
+				<div id="box" class="${classList}"></div>
 			</div>
 		</div>
 	</div>
@@ -67,7 +74,18 @@ function html(bundle = 'native') {
 `
 }
 
-export function createServer(testPath, imageWasRequestedCallback, serverErrorCallback, requestErrorCallback) {
+function readTextFileSync(testPath, name) {
+	try {
+		return fsSync.readFileSync(path.join(...testPath, name), 'utf8').trim();
+	} catch {
+		return '';
+	}
+}
+
+export function createServer(testPath, imageWasRequestedCallback, serverErrorCallback, requestErrorCallback, cssWasRequestedCallback) {
+	const charset = readTextFileSync(testPath, 'charset.txt');
+	const extraClasses = readTextFileSync(testPath, 'extra-class.txt').split(/\s+/).filter(Boolean);
+
 	const server = http.createServer(async (req, res) => {		
 		const parsedUrl = new URL(req.url, 'http://localhost:8080');
 		const pathname = decodeURIComponent(parsedUrl.pathname);
@@ -83,35 +101,35 @@ export function createServer(testPath, imageWasRequestedCallback, serverErrorCal
 			case '/native.html':
 				res.setHeader('Content-type', 'text/html');
 				res.writeHead(200);
-				res.end(html('native'));
+				res.end(html('native', extraClasses));
 				return;
 			case '/csstools-postcss-bundler.html':
 				res.setHeader('Content-type', 'text/html');
 				res.writeHead(200);
-				res.end(html('csstools-postcss-bundler'));
+				res.end(html('csstools-postcss-bundler', extraClasses));
 				return;
 			case '/postcss-import.html':
 				res.setHeader('Content-type', 'text/html');
 				res.writeHead(200);
-				res.end(html('postcss-import'));
+				res.end(html('postcss-import', extraClasses));
 				return;
 			case '/lightningcss.html':
 				res.setHeader('Content-type', 'text/html');
 				res.writeHead(200);
-				res.end(html('lightningcss'));
+				res.end(html('lightningcss', extraClasses));
 				return;
 			case '/esbuild.html':
 				res.setHeader('Content-type', 'text/html');
 				res.writeHead(200);
-				res.end(html('esbuild'));
+				res.end(html('esbuild', extraClasses));
 				return;
 			case '/style.css':
-				res.setHeader('Content-type', 'text/css');
+				res.setHeader('Content-type', charset ? `text/css; charset=${charset}` : 'text/css');
 				res.writeHead(200);
 
 				switch (bundle) {
 					case 'native':
-						res.end(await fs.readFile(path.join(...testPath, 'style.css'), 'utf8'));
+						res.end(await fs.readFile(path.join(...testPath, 'style.css')));
 						return;
 
 					case 'csstools-postcss-bundler':
@@ -205,9 +223,13 @@ export function createServer(testPath, imageWasRequestedCallback, serverErrorCal
 					}
 
 					if (fileExistsWithCaseSync(path.join(...testPath, pathname.slice(1)))) {
+						if (cssWasRequestedCallback) {
+							cssWasRequestedCallback(pathname);
+						}
+
 						res.setHeader('Content-type', 'text/css');
 						res.writeHead(200);
-						res.end(await fs.readFile(path.join(...testPath, pathname.slice(1)), 'utf8'));
+						res.end(await fs.readFile(path.join(...testPath, pathname.slice(1))));
 						return;
 					}
 				}
@@ -226,6 +248,14 @@ export function createServer(testPath, imageWasRequestedCallback, serverErrorCal
 						res.end(responseContent);
 						return;
 					}
+				}
+
+				const contentType = CONTENT_TYPES[path.extname(pathname).toLowerCase()];
+				if (contentType && fileExistsWithCaseSync(path.join(...testPath, pathname.slice(1)))) {
+					res.setHeader('Content-type', contentType);
+					res.writeHead(200);
+					res.end(await fs.readFile(path.join(...testPath, pathname.slice(1))));
+					return;
 				}
 
 				res.setHeader('Content-type', 'text/plain');
