@@ -1,0 +1,7 @@
+@layer one;
+@layer two;
+@layer three;
+
+@import url("a.css") layer(one);
+@import url("b.css") layer(two);
+@import url("c.css") layer(three);

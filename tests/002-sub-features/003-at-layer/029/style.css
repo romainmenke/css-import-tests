@@ -1,0 +1,7 @@
+@import url("extra.css");
+
+@layer second, first;
+
+@layer second {
+	.box { background-color: green; }
+}

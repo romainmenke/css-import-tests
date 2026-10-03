@@ -1,0 +1,7 @@
+@layer foo {
+	@import url("red.css");
+
+	.box {
+		background-color: green;
+	}
+}

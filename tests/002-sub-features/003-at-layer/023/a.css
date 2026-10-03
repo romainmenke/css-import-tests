@@ -1,0 +1,9 @@
+@supports (display: grid) {
+	@layer alpha {
+		.box {
+			background-color: red;
+		}
+	}
+}
+
+@layer beta;

@@ -1,0 +1,7 @@
+@import url("a.css");
+
+@layer beta.gamma {
+	.box {
+		background-color: green;
+	}
+}

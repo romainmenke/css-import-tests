@@ -1,0 +1,13 @@
+@import url("a.css");
+
+@layer alpha {
+	.box {
+		background-color: red;
+	}
+}
+
+@layer beta {
+	.box {
+		background-color: green;
+	}
+}

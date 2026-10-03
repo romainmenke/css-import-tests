@@ -1,0 +1,9 @@
+@media all {
+	@layer alpha {
+		.box {
+			background-color: red;
+		}
+	}
+}
+
+@layer beta;
